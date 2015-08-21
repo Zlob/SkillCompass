@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/parse', "ParserController@parse");
+
+
+// Route::any('api/{all}', "JsonServerController@handleRequest")->where('all', '.*');
