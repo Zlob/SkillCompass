@@ -32,7 +32,7 @@ class HeadHunterParser
     {
         $this->client = new \Guzzle\Service\Client('https://api.hh.ru');
         $this->client->setUserAgent( 'SkillPricer/1.0 (vamakin@gmail.com)');
-        $this->parseDate = new date('Y-m-d');
+        $this->parseDate = date('Y-m-d');
     }
 
     /**
@@ -40,7 +40,7 @@ class HeadHunterParser
      */
     public function parse()
     {
-        $this->clearDB(); // todo only for testing
+//        $this->clearDB(); // todo only for testing
         $jobs = $this->findJobs();
         foreach ($jobs as $jobId) {
             $this->parseJob($jobId);
@@ -57,13 +57,13 @@ class HeadHunterParser
         $result = [];
 
         //todo для всех регионов РФ
-        $specialization = 1;  //специализация - IT
+        $specialization = '1.221';  //программирование и разработка
         $area = 2;            //регион СПБ
         $only_with_salary = true; //только с указанием зарплаты
         $currency = 'RUR'; //валюта      
 
         //итерация по страницам
-        for ($page = 0; $page < 1; $page++) { //todo 10 -> 100
+        for ($page = 0; $page < 100; $page++) {
 
             $query = ['query' =>
                 [
@@ -113,10 +113,10 @@ class HeadHunterParser
 
         //ищем ключевые навыки по тексту вакансии
         $vacancy_skills = $this->getVacancySkills($data['description']);
-        if ($vacancy_skills <= 20) { //если нашлось больше 20 - вероятно вакансия на английском -> игнорируем
+        if (count($vacancy_skills) <= 20) { //если нашлось больше 20 - вероятно вакансия на английском -> игнорируем
             //сохраняем найденные ключевые вакансии
             foreach ($vacancy_skills as $keySkill) {
-                $skill = $this->getSkill($keySkill['name'], 0);
+                $skill = $this->getSkill($keySkill, 0);
                 $job->skills()->attach($skill);
             }
         }
@@ -142,16 +142,10 @@ class HeadHunterParser
     {
         //ищем скилл с таким же именем
         $skill = Skill::where('name', $skillName)->first();
-        //если нашли - меняем флаг "оригинальности" при необходимости
-        if ($skill && $skill->is_original === 0 && $is_original === 1) {
-            $skill->is_original = $is_original;
-            $skill->save();
-        }
-        //если не нашли - добавляем
-        if (!$skill) {
+        //если не нашли - добавляем ( только ключевые)
+        if (!$skill && $is_original === 1) {
             $skill = new Skill();
             $skill->is_verified = 0;
-            $skill->is_original = $is_original;
             $skill->name = $skillName;
             $skill->save();
         }
