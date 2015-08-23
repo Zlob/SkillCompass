@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @author vamakin
  */
-class job extends Model {
-    //put your code here
+class Job extends Model {
+
+    public function skills()
+    {
+        return $this->belongsToMany('App\Models\Skill');
+    }
+
 }
 
 ?>
