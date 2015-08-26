@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropIsOriginalColumn extends Migration
+class AddGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class DropIsOriginalColumn extends Migration
      */
     public function up()
     {
-        Schema::table('skills', function ($table) {
-            $table->dropColumn('is_original');
+        Schema::create('groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +26,6 @@ class DropIsOriginalColumn extends Migration
      */
     public function down()
     {
-        Schema::table('skills', function ($table) {
-            $table->boolean('is_original');
-        });
+        Schema::drop('groups');
     }
 }
