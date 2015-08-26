@@ -30,6 +30,8 @@ class HeadHunterParser
      */
     public function __construct()
     {
+//         phpinfo();
+//         set_time_limit(6000);
         $this->client = new \Guzzle\Service\Client('https://api.hh.ru');
         $this->client->setUserAgent( 'SkillPricer/1.0 (vamakin@gmail.com)');
         $this->parseDate = date('Y-m-d');
@@ -40,7 +42,7 @@ class HeadHunterParser
      */
     public function parse()
     {
-//        $this->clearDB(); // todo only for testing
+       $this->clearDB(); // todo only for testing
         $jobs = $this->findJobs();
         foreach ($jobs as $jobId) {
             $this->parseJob($jobId);
@@ -79,6 +81,7 @@ class HeadHunterParser
             foreach ($jobsPage['items'] as $job) {
                 $result[] = $job['id'];
             }
+//             sleep(3);
         }
         return $result;
     }
@@ -128,7 +131,6 @@ class HeadHunterParser
     public function clearDB()
     {
         Job::where('id', '>', 0)->delete();
-        Skill::where('id', '>', 0)->delete();
     }
 
     /**
