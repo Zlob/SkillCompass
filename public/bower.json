@@ -1,0 +1,23 @@
+{
+  "name": "SkillCompass",
+  "version": "1.0",
+  "homepage": "https://github.com/Zlob/SkillPricer",
+  "authors": [
+    "vamakin <vamakin@gmail.com>"
+  ],
+  "description": "Сайт статистики технологий программирования",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "backbone": "~1.2.2",
+    "requirejs": "~2.1.20"
+  }
+}
