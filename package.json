@@ -4,7 +4,25 @@
     "gulp": "^3.8.8"
   },
   "dependencies": {
-    "laravel-elixir": "^2.0.0",
-    "bootstrap-sass": "^3.0.0"
-  }
+    "bootstrap-sass": "^3.0.0",
+    "bower": "^1.5.2",
+    "laravel-elixir": "^2.0.0"
+  },
+  "name": "SkillCompass",
+  "description": "Сайт статистики технологий программирования",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zlob/SkillPricer.git"
+  },
+  "author": "vamakin <vamakin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zlob/SkillPricer/issues"
+  },
+  "homepage": "https://github.com/Zlob/SkillPricer"
 }
