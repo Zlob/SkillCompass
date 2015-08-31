@@ -7,8 +7,9 @@
         <meta name="viewport" content="width=1024">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,300,700">
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script>
     </head>
     <style>
         html, body {
@@ -35,7 +36,7 @@
         }
         
         .jumbotron{
-            background-image: url(/img/black-lozenge.png);
+            background-image: url(/assets/img/black-lozenge.png);
             padding: 60px;
             margin: 0px;
         }
@@ -58,6 +59,7 @@
         .main-color {
             background-color: #314657;
             color: #fff;
+            border: none;
         }       
 
         .container {
@@ -72,7 +74,19 @@
         .sub-color {
             background-color: #8298AB;
             color: #314657;
+
         }
+        
+        .modal-header {
+            border: none;
+            text-align: center;
+        }
+        
+        .modal-footer {
+            border: none;
+            text-align: center;
+        }
+
         
 
 
@@ -80,9 +94,13 @@
     <body>
         <nav class="navbar">            
             <div class="container-fluid">
+                <div class="collapse navbar-collapse navbar-left" >
+                    <ul class="nav navbar-nav nav-pills" id="area-content">
+                    </ul>
+                </div>  
                 <div class="collapse navbar-collapse navbar-right" >
                     <ul class="nav navbar-nav nav-pills">
-                        <li><a class="navbar-btn" href="#">О проекте<span class="sr-only">(current)</span></a></li>
+                        <li><a class="navbar-btn" href="#">О проекте</a></li>
                     </ul>
                 </div>                    
             </div>
@@ -105,7 +123,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <div id="main-content" class="container"></div>  
     </body>
 </html>
