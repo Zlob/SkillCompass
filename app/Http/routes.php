@@ -20,6 +20,7 @@ Route::get('/about', function () {
 });
 
 Route::resource('api/group', 'GroupController');
+Route::resource('api/skill', 'VerifiedSkillController');
 
 Route::get('/parse', "ParserController@parse");
 
