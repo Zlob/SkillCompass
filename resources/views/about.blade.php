@@ -10,18 +10,14 @@
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
-        <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script>
+<!--         <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script> -->
     </head>
     <body>
         <nav class="navbar">            
             <div class="container-fluid">
-                <div class="collapse navbar-collapse navbar-left" >
-                    <ul class="nav navbar-nav nav-pills" id="area-content">
-                    </ul>
-                </div>  
                 <div class="collapse navbar-collapse navbar-right" >
                     <ul class="nav navbar-nav nav-pills">
-                        <li><a class="navbar-btn" href="/about">О проекте</a></li>
+                        <li><a class="navbar-btn" href="/">Главная</a></li>
                     </ul>
                 </div>                    
             </div>
