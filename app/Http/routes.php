@@ -19,6 +19,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::resource('api/group', 'GroupController');
+
 Route::get('/parse', "ParserController@parse");
 
 
