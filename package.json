@@ -1,6 +1,9 @@
 {
   "private": true,
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-requirejs": "^2.0.0",
+    "grunt-cli": "^0.1.13",
     "gulp": "^3.8.8"
   },
   "dependencies": {
