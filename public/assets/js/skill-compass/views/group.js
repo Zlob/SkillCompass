@@ -16,6 +16,7 @@ define([
 
         initialize : function( options ) {
             this.selectedCount();
+            this.showItems = false;
         },
 
         render : function() {      
@@ -35,9 +36,19 @@ define([
         },
         
         toggleGroup : function() {
+            this.showItems = !this.showItems;
             this.selectedCount();
             this.$('[data-eid="group-skills"]').slideToggle();
             this.$('[data-eid="selected-count"]').toggle();
+            if (this.showItems) {
+                this.$('.glyphicon').addClass('glyphicon-minus');
+                this.$('.glyphicon').removeClass('glyphicon-plus');
+
+            }
+            else {
+                this.$('.glyphicon').addClass('glyphicon-plus');
+                this.$('.glyphicon').removeClass('glyphicon-minus');
+            }
         },
         
         selectedCount : function () {
