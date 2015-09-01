@@ -9,15 +9,18 @@ define([
         template : _.template( tpl ),       
 
         initialize : function( options ) {
+            this.groups = options.groups;
+            this.skills = options.skills;
 
         },
 
         render : function() {      
-            self = this;
+            var self = this;
             self.$el.empty().append( self.template() ); 
-            app.groups.each( function( m ) {
+            this.groups.each( function( m ) {
                 var groupView = new Group({
-                    model : m
+                    model : m,
+                    collection : self.skills
                 });
                 self.$("[data-eid=groups]").append( groupView.render().$el );
             } );
