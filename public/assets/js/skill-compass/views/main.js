@@ -27,9 +27,18 @@ define([
             
             var self = this;
             $.when.apply($, this.promisArr).then( function() {
-                self.skills.each(function(skill){
-                    skill.set('checked', true);
-                });
+                var storedSelection = new Backbone.Collection(JSON.parse(localStorage.getItem('selection'))); 
+                self.skills.each(function(skill) {
+                    var storedSkill = storedSelection.get(skill.get('id'));
+                    if( storedSkill ) {
+                        skill.set('checked', storedSkill.get('checked'));    
+                    }
+                    else{
+                        skill.set('checked', false);    
+                    }
+                    
+                    skill.on('change', self.saveSelection, self);
+                })
                 self.showStep();
             });
             
@@ -47,7 +56,11 @@ define([
         showStep : function() {
             var stepView = new Selection({groups : this.groups, skills : this.skills});
             this.$('[data-eid="step-view"]').empty().append(stepView.render().$el);
-        } 
+        },
+        
+        saveSelection: function (){
+            localStorage.setItem('selection',  JSON.stringify(this.skills));
+        }
 
     });
 
