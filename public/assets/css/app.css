@@ -22,6 +22,8 @@ body {
 }
 
 .jumbotron{
+    text-align: center;
+    vertical-align: middle;
     background-image: url(/assets/img/black-lozenge.png);
     padding: 60px;
     margin: 0px;
@@ -48,12 +50,10 @@ body {
     border: none;
 }       
 
-.container {
-    text-align: center;
-    vertical-align: middle;
-}
 
 .jumbotron-sub{
+    text-align: center;
+    vertical-align: middle;
     padding: 20px;
 }      
 
@@ -71,4 +71,31 @@ body {
 .modal-footer {
     border: none;
     text-align: center;
+}
+
+.btn-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+    ! important;
+    outline-style: none;
+} 
+
+
+
+.btn-round.btn-lg {
+    width: 55px;
+    height: 55px;
+}
+
+
+
+.navigation-view {
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 30px;
 }
