@@ -92,10 +92,12 @@ body {
     height: 55px;
 }
 
-
-
 .navigation-view {
     text-align: center;
     vertical-align: middle;
     margin-top: 30px;
+}
+
+.group-item {
+    cursor: pointer;
 }
