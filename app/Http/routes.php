@@ -21,8 +21,9 @@ Route::get('/about', function () {
 
 Route::resource('api/group', 'GroupController');
 Route::resource('api/skill', 'VerifiedSkillController');
+Route::get('api/line-chart-info', 'ChartController@getLineChartInfo');
 
 Route::get('/parse', "ParserController@parse");
 
 
-// Route::any('api/{all}', "JsonServerController@handleRequest")->where('all', '.*');
+// Route::any('fakeapi/{all}', "JsonServerController@handleRequest")->where('all', '.*');
