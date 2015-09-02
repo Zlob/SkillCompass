@@ -42,7 +42,7 @@ class HeadHunterParser
      */
     public function parse()
     {
-       $this->clearDB(); // todo only for testing
+//        $this->clearDB(); // todo only for testing
         $jobs = $this->findJobs();
         foreach ($jobs as $jobId) {
             $this->parseJob($jobId);
@@ -128,10 +128,10 @@ class HeadHunterParser
     /**
      * Очистка БД перед парсингом - временная мера
      */
-    public function clearDB()
-    {
-        Job::where('id', '>', 0)->delete();
-    }
+//     public function clearDB()
+//     {
+//         Job::where('id', '>', 0)->delete();
+//     }
 
     /**
      * Ищет навык в БД или создает новый
@@ -147,7 +147,6 @@ class HeadHunterParser
         //если не нашли - добавляем ( только ключевые)
         if (!$skill && $is_original === 1) {
             $skill = new Skill();
-            $skill->is_verified = 0;
             $skill->name = $skillName;
             $skill->save();
         }
