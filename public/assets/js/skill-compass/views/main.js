@@ -26,7 +26,7 @@ define([
             ];   
             
             var self = this;
-            $.when.apply($, this.promisArr).then( function() {
+            $.when.apply($, this.promisArr).then( function() {                
                 var storedSelection = new Backbone.Collection(JSON.parse(localStorage.getItem('selection'))); 
                 self.skills.each(function(skill) {
                     var storedSkill = storedSelection.get(skill.get('id'));

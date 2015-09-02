@@ -7,6 +7,8 @@ define([
         url : function() {
             return "/api/group";
         },
+        
+        comparator : 'position',
 
         initialize : function( options ) {
             
