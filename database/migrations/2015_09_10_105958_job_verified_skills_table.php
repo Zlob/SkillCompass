@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobSkill extends Migration
+class JobVerifiedSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateJobSkill extends Migration
      */
     public function up()
     {
-        Schema::create('job_skill', function (Blueprint $table) {
+        Schema::create('job_verified_skill', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('job_id')->unsigned();
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
-            $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->integer('verified_skill_id')->unsigned();
+            $table->foreign('verified_skill_id')->references('id')->on('verified_skills')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,8 @@ class CreateJobSkill extends Migration
      */
     public function down()
     {
-        Schema::drop('job_skill');
+        Schema::table('job_verified_skill', function (Blueprint $table) {
+            Schema::drop('job_verified_skill');
+        });
     }
 }

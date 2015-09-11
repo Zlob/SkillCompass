@@ -7,7 +7,8 @@ require.config({
         "backbone.epoxy": "../bower_components/backbone.epoxy/backbone.epoxy",
         jquery: "../bower_components/jquery/dist/jquery",
         requirejs: "../bower_components/requirejs/require",
-        text: "../bower_components/text/text"
+        text: "../bower_components/text/text",
+        Chart: "../bower_components/Chart.js/Chart"
     },
     shim: {
         bootstrap: {

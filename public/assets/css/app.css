@@ -102,3 +102,7 @@ body {
 .group-item {
     cursor: pointer;
 }
+
+.chart {
+    display: inline-block;
+}

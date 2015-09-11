@@ -14,6 +14,11 @@ class Job extends Model {
     {
         return $this->belongsToMany('App\Models\Skill');
     }
+    
+    public function verifiedSkills()
+    {
+        return $this->belongsToMany('App\Models\VerifiedSkill');
+    }
 
 }
 

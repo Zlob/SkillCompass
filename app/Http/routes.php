@@ -21,7 +21,8 @@ Route::get('/about', function () {
 
 Route::resource('api/group', 'GroupController');
 Route::resource('api/skill', 'VerifiedSkillController');
-Route::get('api/line-chart-info', 'ChartController@getLineChartInfo');
+Route::post('api/popular-chart-info', 'ChartController@getPopularChartInfo');
+Route::post('api/related-chart-info', 'ChartController@getrelatedChartInfo');
 
 Route::get('/parse', "ParserController@parse");
 

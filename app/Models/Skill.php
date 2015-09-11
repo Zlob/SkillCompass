@@ -10,4 +10,11 @@ class Skill extends Model
     {
         return $this->belongsToMany('App\Models\Job');
     }
+    
+    public function verifiedSkill()
+    {
+        return $this->belongsTo('App\Models\VerifiedSkill');
+    }
+    
+    
 }

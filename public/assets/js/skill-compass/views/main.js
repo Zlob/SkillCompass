@@ -1,17 +1,19 @@
 define([
     "backbone",    
     "skill-compass/views/selection",  
+    "skill-compass/views/statistic",  
     "skill-compass/collections/groups",
-    "skill-compass/collections/skills", 
+    "skill-compass/collections/skills",
     "text!../templates/main.html"
-], function( Backbone, Selection, Groups, Skills, tpl ) {
+], function( Backbone, Selection, Statistic, Groups, Skills, tpl ) {
 
     var view = Backbone.View.extend({
         // Кэшируем html-шаблон
         template : _.template( tpl ),
         
         events: {
-            'click [data-eid="btn-nav-skills"]' : "showStep",
+            'click [data-eid="btn-nav-selection"]'  : "showSelectionStep",
+            'click [data-eid="btn-nav-statistic"]' : "showStatisticStep",
         },
 
         initialize : function( options ) {
@@ -39,10 +41,8 @@ define([
                     
                     skill.on('change', self.saveSelection, self);
                 })
-                self.showStep();
-            });
-            
-            this.currentStep = 'Skills';            
+                self.showSelectionStep();
+            });         
         },
 
         render : function() {
@@ -53,9 +53,15 @@ define([
             return this;
         },
         
-        showStep : function() {
-            var stepView = new Selection({groups : this.groups, skills : this.skills});
-            this.$('[data-eid="step-view"]').empty().append(stepView.render().$el);
+        showSelectionStep : function() {
+            this.selectionView = this.selectionView || new Selection({groups : this.groups, skills : this.skills});
+            this.$('[data-eid="step-view"]').empty().append(this.selectionView.render().$el);
+        },
+        
+        showStatisticStep : function() {
+            this.statistic = this.statistic || new Statistic({skills : this.skills});
+            this.$('[data-eid="step-view"]').empty().append(this.statistic.render().$el);  
+            this.statistic.show();                      
         },
         
         saveSelection: function (){

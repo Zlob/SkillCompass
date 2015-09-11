@@ -9,9 +9,9 @@ define([
         template : _.template( tpl ),
         tagName: 'li',
         events: {
-            'click [data-eid="area-btn"]' : "showSelection",
-            'click [data-eid="msk-btn"]' : "setMoskow",
-            'click [data-eid="spb-btn"]' : "setSpb",
+            'click [data-eid="area-btn"]': "showSelection",
+            'click [data-eid="msk-btn"]': "setMoskow",
+            'click [data-eid="spb-btn"]': "setSpb",
         },
 
         initialize : function( options ) {
