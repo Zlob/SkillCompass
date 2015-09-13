@@ -9,7 +9,6 @@ define([
         template : _.template( tpl ),       
 
         initialize : function( options ) {
-//             this.skills = options.skills;
         },
 
         render : function() {      
@@ -23,15 +22,42 @@ define([
             $.ajax({
                 method: "POST",
                 url: "api/popular-chart-info",
-                data: { id: self.model.get('id') },
+                data: { 
+                    id: self.model.get('id'),
+                    areaId: localStorage.getItem('areaId') || 1
+                },
                 headers: {
                 "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
                 }
-            }).done(function(data) {
+            }).done(function(rawData) {
+                var data = self.prepareData(rawData);
                 var ctx = self.$("#popular-chart").get(0).getContext('2d');
-                self.myNewChart = new Chart(ctx).Line(data);
+                self.myNewChart = new Chart(ctx).Line(
+                    data
+                );
             });          
-        }        
+        },
+        
+        prepareData : function(rawData) {
+            var data = {
+                labels: [],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(215,75,75,0.5)",
+                        strokeColor: "rgba(215,75,75,0.8)",
+                        highlightFill: "rgba(215,75,75,0.75)",
+                        highlightStroke: "rgba(215,75,75,1)",
+                        data: []
+                    }
+                ]
+            };
+            _.each(rawData, function(column) {
+                data.labels.push(column.name);
+                data.datasets[0].data.push(parseInt(column.total_count));
+            })
+            return data;
+        }    
        
     });
 

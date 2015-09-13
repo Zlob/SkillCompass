@@ -49,10 +49,10 @@ define([
                 datasets: [
                     {
                         label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.5)",
-                        strokeColor: "rgba(220,220,220,0.8)",
-                        highlightFill: "rgba(220,220,220,0.75)",
-                        highlightStroke: "rgba(220,220,220,1)",
+                        fillColor: "rgba(215,75,75,0.5)",
+                        strokeColor: "rgba(215,75,75,0.8)",
+                        highlightFill: "rgba(215,75,75,0.75)",
+                        highlightStroke: "rgba(215,75,75,1)",
                         data: []
                     }
                 ]
@@ -65,6 +65,8 @@ define([
         }
        
     });
+    
+    
 
     return view;
 });

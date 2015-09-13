@@ -17,32 +17,30 @@ class ChartController extends Controller
      */
     public function getPopularChartInfo()
     {
-//         $skills = Input::get('skills');
-//         foreach($skills as $skill){
-//             if($skill['checked'] != 'true'){
-//                 continue;
-//             }
-//             //todo - реальные данны
-//         }
-        $data = [
-            'labels' => ["January", "February", "March", "April", "May", "June", "July"],
-            'datasets' => [
-                    [
-                        'label' => "My First dataset",
-                        'fillColor' => "rgba(220,220,220,0.2)",
-                        'strokeColor' => "rgba(220,220,220,1)",
-                        'pointColor' => "rgba(220,220,220,1)",
-                        'pointStrokeColor' => "#fff",
-                        'pointHighlightFill' => "#fff",
-                        'pointHighlightStroke' => "rgba(220,220,220,1)",
-                        'data' => [65, 59, 80, 81, 56, 55, 40]
-                    ]
-                ]
-        ];
-        return $data;
+        $id = Input::get('id');
+        $areaId = Input::get('areaId');
+        $result = [];
+        
+        //получаем даты
+        $dates = $this->getDates(); 
+        foreach($dates as $date){
+            $countInMonth = DB::table('job_verified_skill')
+                ->join('jobs', 'job_verified_skill.job_id', '=', 'jobs.id')
+                ->where('verified_skill_id', $id)
+                ->where('begda', '<=', $date['date'])
+                ->where('endda', '>=', $date['date'])
+                ->where('area_id', $areaId)
+                ->count();
+            $item['total_count'] = $countInMonth;
+            $item['name'] = $date['name'];
+            $result[] = $item;
+        }
+        return $result;
+
+        //считаем для каждой даты статистику
     }
     
-    public function getrelatedChartInfo()
+    public function getRelatedChartInfo()
     {
         $id = Input::get('id');
         $areaId = Input::get('areaId');
@@ -60,8 +58,8 @@ class ChartController extends Controller
         
         //получаем все скиллы вакансий
         $result = DB::table('job_verified_skill')
-            ->join('verified_skills', 'job_verified_skill.verified_skill_id', '=', 'verified_skills.id')
-            ->join('jobs', 'job_verified_skill.job_id', '=', 'jobs.id')
+            ->leftJoin('verified_skills', 'job_verified_skill.verified_skill_id', '=', 'verified_skills.id')
+            ->leftJoin('jobs', 'job_verified_skill.job_id', '=', 'jobs.id')
             ->select('verified_skills.name', DB::raw('count(verified_skills.id) as total_count'))
             ->whereIn('job_id', $job_ids)
             ->where('verified_skills.id', '!=', $id)
@@ -71,6 +69,10 @@ class ChartController extends Controller
             ->limit(15)
             ->get();
         
+        foreach($result as $esultItem){
+            $esultItem->total_count = $this->getPercentage($jobs_count, $esultItem->total_count);
+        }
+        
         return $result;
         
     }
@@ -78,4 +80,30 @@ class ChartController extends Controller
     private function getPercentage($totalCount, $partCount, $precesion = 0) {
          return round (filter_var($partCount, FILTER_VALIDATE_INT) / $totalCount * 100, $precesion);
     }
+    
+    private function getDates()
+    {
+        $dates = [];      
+        $oneMonth = new \DateInterval('P1M');
+        $curentDate = new \DateTime();
+        $MONTH_MIDDLE = 15;
+        
+        //если месяц не перевалил за середину, берем предидущий месяц
+        if($curentDate->format('d') < $MONTH_MIDDLE){
+            $curentDate->sub($oneMonth);
+        }
+        //ставим середину месяца
+        $curentDate->setDate($curentDate->format('Y'), $curentDate->format('m'), $MONTH_MIDDLE);
+        for($i = 0; $i < 12; $i++){
+            $dateElem = [];
+            $dateElem['date'] = $curentDate->format('Y-m-d');
+            $dateElem['name'] = $curentDate->format('F');
+            array_unshift($dates, $dateElem);
+            $curentDate->sub($oneMonth);
+        }             
+
+        return $dates;
+    }
+    
+    
 }
