@@ -237,6 +237,30 @@ class HeadHunterParser
         }
         return $result;
     }
+    
+    /**
+     * Связывает вакансии с верефицированными скилами, 
+     * если скилл был верефицированн уже после добавления вакансии
+     * 
+     */
+    public function attachNewVerifiedSkills()
+    {
+        $skills = Skill::whereNotNull('verified_skill_id')->get();
+        foreach($skills as $skill){
+            $jobs = Job
+                ::whereHas('skills', function ($query) use ($skill) {
+                    $query->where('skill_id', $skill->id);
+                })
+                ->whereHas('verifiedSkills', function ($query) use ($skill) {
+                    $query->where('verified_skill_id', $skill->verified_skill_id);
+                }, '<', 1)
+                ->get();
+            foreach($jobs as $job){
+                $job->verifiedSkills()->attach($skill->verified_skill_id); 
+            }            
+        }
+        
+    }
 
 }
 

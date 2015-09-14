@@ -14,7 +14,12 @@ class ParserController extends Controller
     {
         $hhParser = new \App\Helpers\HeadHunterParser();
         $hhParser->parse();
-    }
+    }    
     
-
+    public function reattach()
+    {
+        $hhParser = new \App\Helpers\HeadHunterParser();
+        $hhParser->attachNewVerifiedSkills();
+    } 
+    
 }
