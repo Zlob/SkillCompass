@@ -9,6 +9,8 @@ define([
         template : _.template( tpl ),       
 
         initialize : function( options ) {
+            this.dispetcher = Backbone.Events;
+            this.dispetcher.on('area-change', this.showChart, this);
 //             this.skills = options.skills;
         },
 
@@ -48,11 +50,11 @@ define([
                 labels: [],
                 datasets: [
                     {
-                        label: "My First dataset",
-                        fillColor: "rgba(215,75,75,0.5)",
-                        strokeColor: "rgba(215,75,75,0.8)",
-                        highlightFill: "rgba(215,75,75,0.75)",
-                        highlightStroke: "rgba(215,75,75,1)",
+                        label: "График часто встречающихся навыков",
+                        fillColor: "rgba(209,89,38,0.5)",
+                        strokeColor: "rgba(209,89,38,0.8)",
+                        highlightFill: "rgba(209,89,38,0.75)",
+                        highlightStroke: "rgba(209,89,38,1)",
                         data: []
                     }
                 ]

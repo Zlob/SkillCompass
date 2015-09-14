@@ -2,7 +2,7 @@ require( [
     "skill-compass/views/main",          
     "skill-compass/views/area",   
     "bootstrap"
-         ], function( MainView, AreaView ) { 
+         ], function( MainView, AreaView ) {   
     
         var areaView = new AreaView();    
         $("#area-content").append( areaView.render().$el );

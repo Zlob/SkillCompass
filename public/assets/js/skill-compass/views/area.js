@@ -15,8 +15,10 @@ define([
         },
 
         initialize : function( options ) {
+            this.dispetcher = Backbone.Events;
             this.collection = new Backbone.Collection([{'id' : 1, 'name' : 'Москва'},{'id' : 2, 'name' : 'Санкт-Петербург'}]);
             this.setModel( localStorage.getItem('areaId') || 1);
+            
         },
 
         render : function() {
@@ -31,6 +33,7 @@ define([
         setModel : function(id) {
             this.model = this.collection.get(id);
             localStorage.setItem('areaId', id);
+            this.dispetcher.trigger('area-change', {id : id});
         },
         
         showSelection : function() {

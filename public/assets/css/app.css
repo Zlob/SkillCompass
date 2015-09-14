@@ -9,6 +9,7 @@ body {
     display: table;
     font-weight: 100;
     font-family: 'Trebuchet MS','Open Sans',arial,sans-serif;
+    background-color: #f2f2f2;
 }
 
 .navbar {
@@ -105,4 +106,27 @@ body {
 
 .chart {
     display: inline-block;
+/*     margin: 5px; */
+
+}
+
+.statistic-item-label {
+    margin-top: 10px;
+    text-align: center;
+    border-bottom: 2px dotted #dadada;
+/*     background-color: #8298AB;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px; */
+/*     transform: rotate(-90deg); */
+}
+
+.statistic-item {
+
+    margin: 15px 0px;
+/*     background-color: #8298AB; */
+    border-bottom: 2px solid #dadada;
+    border-radius: 6px;
+    border-bottom-color: rgb(218, 218, 218);
+    background-color: rgb(255, 255, 255);
+/*     border-bottom-width: 1px; */
 }
