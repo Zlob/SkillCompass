@@ -40,6 +40,10 @@ define([
                     {
                         tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
                         scaleLabel: "<%=value%>%",
+                        scaleOverride: true,
+                        scaleSteps: 10,
+                        scaleStepWidth: 10,
+                        scaleStartValue: 0,
                     }
                 );
             });          

@@ -35,7 +35,9 @@ define([
                 var data = self.prepareData(rawData);
                 var ctx = self.$("#popular-chart").get(0).getContext('2d');
                 self.myNewChart = new Chart(ctx).Line(
-                    data
+                    data,
+                    self.getChartOptions(data)
+                    
                 );
             });          
         },
@@ -59,7 +61,30 @@ define([
                 data.datasets[0].data.push(parseInt(column.total_count));
             })
             return data;
-        }    
+        },
+        
+        getChartOptions : function(data) {            
+            var max = Math.max.apply(Math, data.datasets[0].data);
+            var options = {
+                scaleOverride: true,
+                scaleSteps: 10,
+                scaleStepWidth: this.getStepWidth(max),
+                scaleStartValue: 0,
+            };      
+            return options;
+        },
+        
+        getStepWidth: function(max) {
+            if(max < 10){
+                return 1;
+            }
+            if(max < 100){
+                return 10;
+            }
+            if(max < 1000){
+                return 100;
+            }
+        }
        
     });
 
