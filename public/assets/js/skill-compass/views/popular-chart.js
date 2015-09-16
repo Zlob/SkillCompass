@@ -79,11 +79,15 @@ define([
                 return 1;
             }
             if(max < 100){
-                return 10;
+                return this.getUpperRounded(max, 10)/10;
             }
             if(max < 1000){
-                return 100;
+                return this.getUpperRounded(max, 100)/10;
             }
+        },
+        
+        getUpperRounded : function ($value, $roundStep) {
+            return $value - $value%$roundStep + $roundStep;
         }
        
     });
