@@ -24,8 +24,3 @@ Route::resource('api/skill', 'VerifiedSkillController');
 Route::post('api/popular-chart-info', 'ChartController@getPopularChartInfo');
 Route::post('api/related-chart-info', 'ChartController@getrelatedChartInfo');
 
-Route::get('/parse', "ParserController@parse");
-Route::get('/reattach', "ParserController@reattach");
-
-
-// Route::any('fakeapi/{all}', "JsonServerController@handleRequest")->where('all', '.*');
