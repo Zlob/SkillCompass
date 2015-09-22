@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+//         $schedule->command('inspire')
+//                  ->hourly();
         
         $schedule->call(function () {
             Log::info('attaching new verified skills started');
@@ -47,7 +47,7 @@ class Kernel extends ConsoleKernel
                     $job->verifiedSkills()->attach($skill->verified_skill_id); 
                 }            
             }
-        })->hourly();
+        })->daily();
 
         $schedule->call(function () {
             Log::info('HH parsing started');
