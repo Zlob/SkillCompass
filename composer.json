@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "zlob/php-json-server": "~1.1",
-        "guzzle/guzzle": "~3.0"
+        "guzzle/guzzle": "~3.0",
+        "zlob/any-json-tester": "@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
