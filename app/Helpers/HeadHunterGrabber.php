@@ -26,7 +26,7 @@
             //итерация по городам
             foreach ($areas as $area) {
                 //итерация по страницам
-                for ($page = 0; $page < 1; $page++) {
+                for ($page = 0; $page < 100; $page++) {
 
                     $query = [
                         'query' => [
@@ -95,7 +95,7 @@
         {
             $cost = 0;
             if ($from && $to) {
-                $cost ($from + $to) / 2;
+                $cost = ($from + $to) / 2;
             }
             else{
                 $cost = $from ?: $to;
