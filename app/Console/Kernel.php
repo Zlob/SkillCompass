@@ -6,7 +6,8 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Models\Skill;
 use App\Models\Job;
-use App\Helpers\HeadHunterParser;
+use App\Helpers\Parser;
+use App\Helpers\HeadHunterGrabber;
 use Log;
 
 class Kernel extends ConsoleKernel
@@ -51,8 +52,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             Log::info('HH parsing started');
-            $hhParser = new \App\Helpers\HeadHunterParser();
-            $hhParser->parse();          
+            $parser = new Parser([$hhGrabber]);
+            $parser->parse();       
         })->daily();
     }
 }
