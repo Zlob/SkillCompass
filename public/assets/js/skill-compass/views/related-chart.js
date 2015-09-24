@@ -44,6 +44,7 @@ define([
                         scaleSteps: 10,
                         scaleStepWidth: 10,
                         scaleStartValue: 0,
+                        responsive: true,
                     }
                 );
             });          

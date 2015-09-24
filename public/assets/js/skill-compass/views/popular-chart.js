@@ -70,6 +70,7 @@ define([
                 scaleSteps: 10,
                 scaleStepWidth: this.getStepWidth(max),
                 scaleStartValue: 0,
+                responsive: true,
             };      
             return options;
         },
