@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\Model;
  * @author vamakin
  */
 class Group extends Model {
-
+    public $timestamps = false;
 }
