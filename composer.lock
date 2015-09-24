@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41bb4410c48c24940f3669eefefd4ff4",
+    "hash": "e2d5a4f15245524b0495a811c8321315",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1843,16 +1843,16 @@
         },
         {
             "name": "zlob/any-json-tester",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Zlob/AnyJsonTester.git",
-                "reference": "8002d6daee10d6a770818fa4dee3d22834352de3"
+                "reference": "5b53e41f6366be8dd8e580fb9bfd9b440b5fa328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zlob/AnyJsonTester/zipball/8002d6daee10d6a770818fa4dee3d22834352de3",
-                "reference": "8002d6daee10d6a770818fa4dee3d22834352de3",
+                "url": "https://api.github.com/repos/Zlob/AnyJsonTester/zipball/5b53e41f6366be8dd8e580fb9bfd9b440b5fa328",
+                "reference": "5b53e41f6366be8dd8e580fb9bfd9b440b5fa328",
                 "shasum": ""
             },
             "require": {
@@ -1887,7 +1887,7 @@
                 "test",
                 "testing"
             ],
-            "time": "2015-09-22 11:53:13"
+            "time": "2015-09-22 13:17:40"
         },
         {
             "name": "zlob/php-json-server",
@@ -3119,9 +3119,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "zlob/any-json-tester": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
