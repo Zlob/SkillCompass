@@ -70,7 +70,6 @@ class HeadHunterParser
     {
         $result = [];
 
-        //todo для всех регионов РФ
         $specialization = '1.221';  //программирование и разработка
         $only_with_salary = true; //только с указанием зарплаты
         $currency = 'RUR'; //валюта      
@@ -238,5 +237,3 @@ class HeadHunterParser
     }
     
 }
-
-?>
