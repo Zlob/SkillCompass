@@ -7,6 +7,7 @@ use Request;
 use Response;
 use Config;
 use JsonServer\JsonServer;
+    
 
 class testController extends Controller
 {
@@ -20,4 +21,5 @@ class testController extends Controller
                                                                             //object with content, status and headers
         $response->send();                                                  //send response
     }
+   
 }
