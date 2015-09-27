@@ -26,7 +26,7 @@
             //итерация по городам
             foreach ($areas as $area) {
                 //итерация по страницам
-                for ($page = 0; $page < 1; $page++) {
+                for ($page = 0; $page < 100; $page++) {
 
                     $query = [
                         'query' => [
@@ -79,7 +79,7 @@
             $result                  = [];
             $result['vacancy_data']  = $vacancyData;
             $result['key_skills']    = $data['key_skills'];
-            $result['parsed_skills'] = $this->getVacancySkills($data['description']);
+            $result['parsed_skills'] = $this->getVacancySkillsFromText($data['description']);
 
             return $result;
         }
@@ -95,7 +95,7 @@
         {
             $cost = 0;
             if ($from && $to) {
-                $cost ($from + $to) / 2;
+                $cost = ($from + $to) / 2;
             }
             else{
                 $cost = $from ?: $to;
@@ -113,7 +113,7 @@
          * @param $description
          * @return array
          */
-        public function getVacancySkills($description)
+        public function getVacancySkillsFromText($description)
         {
             $description = htmlspecialchars_decode(strip_tags($description));
             $re          = '/(\w+\s\w+|\w+)/';
