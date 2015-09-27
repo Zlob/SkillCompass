@@ -79,7 +79,7 @@
             $result                  = [];
             $result['vacancy_data']  = $vacancyData;
             $result['key_skills']    = $data['key_skills'];
-            $result['parsed_skills'] = $this->getVacancySkills($data['description']);
+            $result['parsed_skills'] = $this->getVacancySkillsFromText($data['description']);
 
             return $result;
         }
@@ -113,7 +113,7 @@
          * @param $description
          * @return array
          */
-        public function getVacancySkills($description)
+        public function getVacancySkillsFromText($description)
         {
             $description = htmlspecialchars_decode(strip_tags($description));
             $re          = '/(\w+\s\w+|\w+)/';

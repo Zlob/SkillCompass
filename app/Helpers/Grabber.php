@@ -19,18 +19,18 @@ abstract class Grabber implements \Iterator, GrabberInterface
     private $vacancies = [];
 
     /**
-    * клиент для выполнения запросов к API
-    * @var \Guzzle\Service\Client
+    * класс для выполнения запросов к API
+    * @var Request
     */
-    private $client;
+    private $request;
 
     /**
     * @param $client
     */
-    public function __construct($client)
+    public function __construct(ApiRequest $request)
     {
         $this->position  = 0;
-        $this->client    = $client;
+        $this->request   = $request;
         $this->vacancies = $this->getVacancies();
     }
 
@@ -86,14 +86,7 @@ abstract class Grabber implements \Iterator, GrabberInterface
     */
     protected function getRequestData($api, array $options = [])
     {
-        $headers  = [];
-
-        $response = $this->client->get($api, $headers, $options)->send(); //todo catch exception
-        //todo throw exception if status != 200 and log it
-        $result = json_decode($response->getBody(), true);
-
-        return $result;
-
+        return $this->request->getRequestData($api, $options);
     }
 
     abstract protected function getVacancies();

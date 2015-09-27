@@ -28,16 +28,23 @@ class Parser
     {
         foreach( $this->grabbers as $grabber ) {
             foreach ($grabber as $vacancyId) {
-                $job = Job::getJobByVacancyId($vacancyId);
-                if ($job) {
-                    $job->extendJob();
-                }
-                else {
-                    $vacancyInfo = $grabber->getVacancyDetails($vacancyId);
-                    Job::createJobWithSkills($vacancyInfo);                  
-                }
+                $this->parseVacancy($vacancyId, $grabber);
             }
         }
     }
+    
+    public function parseVacancy($vacancyId, $grabber)
+    {
+        $job = Job::getJobByVacancyId($vacancyId);
+        if ($job) {
+            $job->extendJob();
+        }
+        else {
+            $vacancyInfo = $grabber->getVacancyDetails($vacancyId);
+            Job::createJobWithSkills($vacancyInfo);                  
+        }
+    }
+    
+    
     
 }
