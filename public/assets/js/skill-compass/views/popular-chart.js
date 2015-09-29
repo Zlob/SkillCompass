@@ -1,8 +1,9 @@
 define([
     "backbone",    
     "Chart",
+    "../utils/tools",
     "text!../templates/popular-chart.html"
-], function( Backbone, Chart, tpl ) {
+], function( Backbone, Chart, Tools, tpl ) {
 
     var view = Backbone.View.extend({
         // Кэшируем html-шаблон
@@ -68,28 +69,13 @@ define([
             var options = {
                 scaleOverride: true,
                 scaleSteps: 10,
-                scaleStepWidth: this.getStepWidth(max),
+                scaleStepWidth: Tools.getStepWidth(max),
                 scaleStartValue: 0,
                 responsive: true,
             };      
             return options;
         },
         
-        getStepWidth: function(max) {
-            if(max < 10){
-                return 1;
-            }
-            if(max < 100){
-                return this.getUpperRounded(max, 10)/10;
-            }
-            if(max < 1000){
-                return this.getUpperRounded(max, 100)/10;
-            }
-        },
-        
-        getUpperRounded : function ($value, $roundStep) {
-            return $value - $value%$roundStep + $roundStep;
-        }
        
     });
 
