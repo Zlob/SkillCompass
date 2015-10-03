@@ -70,6 +70,7 @@
             $vacancyData['url']        = $data['alternate_url'];
             $vacancyData['cost']       = $this->getCost($data['salary']['from'], $data['salary']['to'], $data['salary']['currency']);
             $vacancyData['area_id']    = $data['area']['id'];
+            $vacancyData['name']       = $data['name'];
             $vacancyData['parse_date'] = $currentDate;
             $publichedDate             = new \DateTime($data['published_at']);
             $vacancyData['begda']      = $publichedDate->format('Y-m-d');
