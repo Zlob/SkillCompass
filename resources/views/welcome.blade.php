@@ -49,7 +49,7 @@
         <div id="main-content" class="container"></div> 
         <footer id="footer">
             <div class="container">
-                <p class='text-center'><small>© 2015-<?php echo date('Y'); ?> <a href="https://github.com/Zlob/">Макин Владислав</a> <a href='https://github.com/Zlob/SkillCompass'><img src='assets/img/GitHub-Mark-32px.png'></a>  </small></p>
+                <p class='text-center'><small>© 2015-<?php echo date('Y'); ?> &nbsp <a href="https://github.com/Zlob/">Макин Владислав</a> &nbsp <a href='https://github.com/Zlob/SkillCompass'><img src='assets/img/GitHub-Mark-32px.png'></a>  </small></p>
             </div>
         </footer>
     </body>
