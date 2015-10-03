@@ -7,8 +7,10 @@ use AnyJsonTester\AnyJsonTesterLaravel;
 use AnyJsonTester\Types\AnyArray;
 use AnyJsonTester\Types\AnyObject;
 use AnyJsonTester\Types\AnyInteger;
+use AnyJsonTester\Types\AnyFloat;
 use AnyJsonTester\Types\AnyString;
 use AnyJsonTester\Types\AnyDateTime;
+use AnyJsonTester\Types\AnyBoolean;
 
 
 
@@ -25,7 +27,7 @@ class ApiTest extends TestCase
                 new AnyObject( 
                     [
                         'hasFields' => [
-                            "id" => new AnyInteger(['min' => 1]),
+                            "id" => new AnyInteger(['min' => 0]),
                             "name" => new AnyString(['min' => 1, 'max' => 50]),
                             "position"=> new AnyInteger(['min' => 0])
                         ],
@@ -111,6 +113,50 @@ class ApiTest extends TestCase
                     'min' => 1,
                     'max' => 20
                 ]                
+            )
+        );
+    }
+    
+    public function testApiJobsBySkills()
+    {
+        $aggregation = new AnyObject(
+            [
+                'hasFields' => [
+                    'name' => new AnyString(['min' => 0]),
+                    'min' => new AnyFloat(['min' => 0]),
+                    'max' => new AnyFloat(['min' => 0]),
+                    'mid' => new AnyFloat(['min' => 0]),
+                    'total_count' => new AnyInteger(['min' => 0]),
+                    'actual_count' => new AnyInteger(['min' => 0]),
+                ],
+                'strictMode' => true
+            ]
+        );
+        $actual_job = new AnyObject(
+            [
+                'hasFields' => [
+                    'id' => new AnyInteger(['min' => 0]),
+                    'cost' => new AnyFloat(['min' => 0]),
+                    'url' => new AnyString(['min' => 0]),
+                    'actual' => new AnyBoolean(),
+                    'additional_skills_count' => new AnyInteger(['min' => 0])
+                ],
+                'strictMode' => true
+            ]
+
+        );
+        
+        $this->post('api/jobs-by-skills', ['skillIds' => [70], 'areaId' => 2])
+            ->seeJsonLike(
+            new AnyArray(
+                new AnyObject(
+                    [
+                        'hasFields' => [
+                            "aggregation" => $aggregation,
+                            "actual_jobs" => new AnyArray($actual_job)
+                        ]
+                    ]
+                )               
             )
         );
     }
