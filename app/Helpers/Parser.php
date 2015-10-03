@@ -12,13 +12,15 @@ use App\Models\Job;
 class Parser
 {
     private $grabbers = [];
+    private $job;
 
     /**
      * Конструктор
      */
-    public function __construct(array $grabbers)
+    public function __construct(array $grabbers, Job $job)
     {
         $this->grabbers = $grabbers;
+        $this->job = $job;
     }
 
     /**
@@ -33,15 +35,15 @@ class Parser
         }
     }
     
-    public function parseVacancy($vacancyId, $grabber)
+    public function parseVacancy( $vacancyId, $grabber)
     {
-        $job = Job::getJobByVacancyId($vacancyId);
+        $job = $this->job->getJobByVacancyId($vacancyId);
         if ($job) {
             $job->extendJob();
         }
         else {
             $vacancyInfo = $grabber->getVacancyDetails($vacancyId);
-            Job::createJobWithSkills($vacancyInfo);                  
+            $this->job->createJobWithSkills($vacancyInfo);                  
         }
     }
     
