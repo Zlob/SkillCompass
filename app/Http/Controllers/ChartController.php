@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use DB;
 use Input;
+use App\Helpers\JobsGrouperator\JobsGrouperator;
 
 class ChartController extends Controller
 {
@@ -76,6 +78,17 @@ class ChartController extends Controller
         return $result;
         
     }
+    
+    public function getJobsBySkills(Job $job)
+    {
+        $skillIds = Input::get('skillIds');
+        $areaId   = Input::get('areaId');
+
+        $jobs = $job::getJobWithSkills($skillIds, $areaId);
+
+        return $jobs;
+       
+    }    
     
     private function getPercentage($totalCount, $partCount, $precesion = 0) {
          return round (filter_var($partCount, FILTER_VALIDATE_INT) / $totalCount * 100, $precesion);
