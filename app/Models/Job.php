@@ -72,12 +72,27 @@ class Job extends Model {
         
         $groups = [];
         foreach($jobs as $job){
-            $groups[$job->getGroupName($skillIds)][] = $job->toGroupElement();
+            $groupElement = $job->toGroupElement();
+            if($groupElement['additional_skills_count'] <=3 ){
+                $groups[$job->getGroupName($skillIds)][] = $groupElement;    
+            }
+            
         }
         $result = [];
         foreach($groups as $groupName => $group){
-            $result[] = Job::getGroupAggregation($groupName, $group);
+            $groupAggregation = Job::getGroupAggregation($groupName, $group);
+            if($groupAggregation['aggregation']['actual_count'] > 0){
+                $result[] = $groupAggregation;
+            }
         }
+        usort($result, function($group1, $group2){
+            $a = $group1['aggregation']['additional_skills_count'];
+            $b = $group2['aggregation']['additional_skills_count'];
+            if ($a === $b) {
+                return 0;
+            }
+            return ($a > $b) ? 1 : -1;
+        });
         return $result;        
     }
     
@@ -87,17 +102,23 @@ class Job extends Model {
             if ($a['cost'] === $b['cost']) {
                 return 0;
             }
-            return ($a['cost'] > $b['cost']) ? 1 : -1;
+            return ($a['cost'] > $b['cost']) ? -1 : 1;
         });
 
         $aggregation = [];
         $aggregation['name'] = $groupName;
-        $aggregation['min'] = $group[0]['cost'];
-        $aggregation['max'] = end($group)['cost'];
+        $aggregation['min'] = end($group)['cost'];
+        $aggregation['max'] = $group[0]['cost'];
         $aggregation['mid'] = $group[floor((count($group)-1)/2)]['cost'];
         $aggregation['total_count'] = count($group);
-        $active_jobs = array_filter($group, function($groupItem) {return $groupItem['actual'] === true; });
+        $active_jobs = [];
+        foreach($group as $groupItem) {
+            if($groupItem['actual'] === true){
+                $active_jobs[] = $groupItem;
+            }
+        }        
         $aggregation['actual_count'] = count($active_jobs);
+        $aggregation['additional_skills_count'] = $group[0]['additional_skills_count'];
         $result = [];
         $result['aggregation'] = $aggregation;
         $result['actual_jobs'] = $active_jobs;
@@ -111,7 +132,7 @@ class Job extends Model {
      */  
     public function getGroupName($excludeSkillIds)
     {
-        return $this->verifiedSkills
+        $groupName = $this->verifiedSkills
             ->sort(function($a, $b)
                    {
                        if ($a->id === $b->id) {
@@ -124,6 +145,7 @@ class Job extends Model {
                      {
                          return $carry === "" ? $skill['name'] : $carry." ".$skill['name'];
                      }, "");
+        return $groupName === '' ? 'Вы знаете все необходимое' :  $groupName;
     }
     
     /**
@@ -134,9 +156,10 @@ class Job extends Model {
     {
         return [
             'id'     => $this->id,
+            'name'   => $this->name,
             'cost'   => $this->cost,
             'url'    => $this->url,
-            'actual' => $this->getActual(),  
+            'actual' => $this->checkActual(),  
             'additional_skills_count' => $this->verifiedSkills->count()
         ]; 
     }
@@ -145,7 +168,7 @@ class Job extends Model {
      * проверяет, является ли вакансия актуальной
      *
      */
-    private function getActual()
+    private function checkActual()
     {
         $currentDate = new \DateTime();
         $threeDays = new \DateInterval('P3D');

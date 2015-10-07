@@ -54,7 +54,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             Log::info('HH parsing started');
             $hhGrabber = $this->app['App\Helpers\HeadHunterGrabber'];
-            $parser = new Parser([$hhGrabber]);
+            
+            $job = $this->app['App\Models\Job'];            
+            $parser = new Parser([$hhGrabber], $job);
             $parser->parse();       
         })->everyMinute();
     }
