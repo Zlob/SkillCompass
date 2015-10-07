@@ -144,9 +144,8 @@ body {
 }
 
 .glyphicon-triangle-bottom, .glyphicon-triangle-top {
-float: right;
-margin-top: 2px;
-margin-right: -6px;
+    float: right;
+    margin-top: 2px;
 }
 
 .jobs-table-cell {
@@ -166,9 +165,12 @@ margin-right: -6px;
     background-color: #fff;
 }
 
-.jobs-table-row:hover
-{
+.jobs-table-row:hover {
     background-color: #dadada;
+}
+
+.sorted-column-header {
+    padding-left: 26px;
 }
 
 .jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {

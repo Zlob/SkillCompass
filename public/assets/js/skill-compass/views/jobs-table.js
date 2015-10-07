@@ -105,7 +105,8 @@ define([
         },
         
         setSortIcon : function(field, is_asc) {
-            this.$('.sorting-glyph').removeClass( "glyphicon glyphicon-triangle-bottom glyphicon-triangle-top" );
+            this.$('.sorted-column-header').removeClass( "sorted-column-header" );
+            this.$('.sorting-glyph').removeClass( "glyphicon glyphicon-triangle-bottom glyphicon-triangle-top sorted-column-header" );
 
             if(is_asc){
                 var className = 'glyphicon glyphicon-triangle-bottom'    
@@ -113,6 +114,7 @@ define([
                 var className = 'glyphicon glyphicon-triangle-top' 
             }       
             var btn = this.$('[sorting-field='+field+']');
+            btn.addClass('sorted-column-header');
             var span = btn.find('span');
             span.addClass( className );
 
