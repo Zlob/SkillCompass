@@ -162,7 +162,13 @@ margin-right: -6px;
 }
 
 .jobs-table-row {
+    cursor: pointer;
     background-color: #fff;
+}
+
+.jobs-table-row:hover
+{
+    background-color: #dadada;
 }
 
 .jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {
