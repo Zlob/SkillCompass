@@ -119,6 +119,8 @@ class Job extends Model {
         }        
         $aggregation['actual_count'] = count($active_jobs);
         $aggregation['additional_skills_count'] = $group[0]['additional_skills_count'];
+        $aggregation['additional_skills'] = $group[0]['additional_skills'];
+        
         $result = [];
         $result['aggregation'] = $aggregation;
         $result['actual_jobs'] = $active_jobs;
@@ -154,14 +156,20 @@ class Job extends Model {
      */ 
     public function toGroupElement()
     {
-        return [
+        $result = [
             'id'     => $this->id,
             'name'   => $this->name,
             'cost'   => $this->cost,
             'url'    => $this->url,
             'actual' => $this->checkActual(),  
             'additional_skills_count' => $this->verifiedSkills->count()
-        ]; 
+            
+        ];
+        $result['additional_skills'] = [];
+        foreach($this->verifiedSkills as $verifiedSkill){
+            $result['additional_skills'][] = ['name' => $verifiedSkill->name];
+        }
+        return $result; 
     }
     
     /**

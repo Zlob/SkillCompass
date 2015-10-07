@@ -128,7 +128,8 @@ class ApiTest extends TestCase
                     'mid' => new AnyFloat(['min' => 0]),
                     'total_count' => new AnyInteger(['min' => 0]),
                     'actual_count' => new AnyInteger(['min' => 0]),
-                    'additional_skills_count' => new AnyInteger(['min' => 0])
+                    'additional_skills_count' => new AnyInteger(['min' => 0]),
+                    'additional_skills' => new AnyArray(new AnyObject(['hasFields' => ['name' => new AnyString()]]))
                 ],
                 'strictMode' => true
             ]
@@ -141,7 +142,8 @@ class ApiTest extends TestCase
                     'url' => new AnyString(['min' => 0]),
                     'actual' => new AnyBoolean(),
                     'name' =>  new AnyString(['min' => 0]),
-                    'additional_skills_count' => new AnyInteger(['min' => 0])
+                    'additional_skills_count' => new AnyInteger(['min' => 0]),
+                    'additional_skills' => new AnyArray(new AnyObject(['hasFields' => ['name' => new AnyString()]]))
                 ],
                 'strictMode' => true
             ]
