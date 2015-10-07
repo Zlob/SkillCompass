@@ -114,10 +114,6 @@ body {
     margin-top: 10px;
     text-align: center;
     border-bottom: 2px dotted #dadada;
-/*     background-color: #8298AB;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px; */
-/*     transform: rotate(-90deg); */
 }
 
 .statistic-item {
@@ -130,3 +126,49 @@ body {
     background-color: rgb(255, 255, 255);
 /*     border-bottom-width: 1px; */
 }
+
+.jobs-table-header {
+    padding: 0px;
+} 
+
+.jobs-table-header-left {
+    border-radius: 4px 0px 0px 0px;
+}
+
+.jobs-table-header-right {
+    border-radius: 0px 4px 0px 0px;
+}
+
+.jobs-table-header-center {
+    border-radius: 0px;
+}
+
+.glyphicon-triangle-bottom, .glyphicon-triangle-top {
+float: right;
+margin-top: 2px;
+margin-right: -6px;
+}
+
+.jobs-table-cell {
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-color: #dadada;
+    border-style: solid;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: transparent;
+}
+
+.jobs-table-row {
+    background-color: #fff;
+}
+
+.jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {
+    border-bottom: 1px;
+    border-color: #dadada;
+    border-style: solid;
+}
+
+

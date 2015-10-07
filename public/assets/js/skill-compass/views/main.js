@@ -2,10 +2,11 @@ define([
     "backbone",    
     "skill-compass/views/selection",  
     "skill-compass/views/statistic",  
+    "skill-compass/views/jobs-table",  
     "skill-compass/collections/groups",
     "skill-compass/collections/skills",
     "text!../templates/main.html"
-], function( Backbone, Selection, Statistic, Groups, Skills, tpl ) {
+], function( Backbone, Selection, Statistic, JobsTable, Groups, Skills, tpl ) {
 
     var view = Backbone.View.extend({
         // Кэшируем html-шаблон
@@ -14,6 +15,7 @@ define([
         events: {
             'click [data-eid="btn-nav-selection"]'  : "showSelectionStep",
             'click [data-eid="btn-nav-statistic"]' : "showStatisticStep",
+            'click [data-eid="btn-nav-jobs-table"]' : "showJobsTableStep",
         },
 
         initialize : function( options ) {
@@ -62,6 +64,12 @@ define([
             this.statistic = this.statistic || new Statistic({skills : this.skills});
             this.$('[data-eid="step-view"]').empty().append(this.statistic.render().$el);  
             this.statistic.show();                      
+        },
+        
+        showJobsTableStep : function() {
+            this.jobsTable = this.jobsTable || new JobsTable({skills : this.skills});
+            this.$('[data-eid="step-view"]').empty().append(this.jobsTable.render().$el);  
+//             this.jobsTable.show();                      
         },
         
         saveSelection: function (){
