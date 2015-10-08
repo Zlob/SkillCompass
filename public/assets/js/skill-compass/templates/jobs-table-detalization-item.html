@@ -1,6 +1,10 @@
-<div class="col-md-8">
-    <a target="_blank" data-bind="text:name,attr:{href:url}"></a>
+<div class="col-md-12">
+    <a target="_blank" href="http://hh.ru"><img src="assets/img/min-hh-red.png" class="img-responsive detalization-item-image" alt="HH logo"></a> 
+    <a target="_blank" class='detalization-item-link' data-bind="attr:{href:url}">
+        <div data-bind="text:name" class='detalization-item-text'></div>
+        <div class='detalization-item-text'>&asymp;</div>
+        <div data-bind="text:cost" class='detalization-item-text'></div>
+    </a>
 </div>  
-<div class="col-md-2"><p data-bind="text:cost"></p></div>
-<div class="col-md-2"> рублей</div>
+
 

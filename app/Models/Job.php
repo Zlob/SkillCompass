@@ -166,9 +166,15 @@ class Job extends Model {
             
         ];
         $result['additional_skills'] = [];
-        foreach($this->verifiedSkills as $verifiedSkill){
-            $result['additional_skills'][] = ['name' => $verifiedSkill->name];
+        if($this->verifiedSkills->count() > 0){
+            foreach($this->verifiedSkills as $verifiedSkill){
+                $result['additional_skills'][] = ['name' => $verifiedSkill->name];
+            }
         }
+        else{
+            $result['additional_skills'][] = ['name' => 'Вы знаете все необходимое'];
+        }
+
         return $result; 
     }
     

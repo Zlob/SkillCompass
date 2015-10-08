@@ -74,6 +74,10 @@ body {
     text-align: center;
 }
 
+.step-view {
+    margin-bottom: 20px;
+}
+
 .btn-round {
     width: 40px;
     height: 40px;
@@ -106,8 +110,6 @@ body {
 
 .chart {
     display: inline-block;
-/*     margin: 5px; */
-
 }
 
 .statistic-item-label {
@@ -117,14 +119,11 @@ body {
 }
 
 .statistic-item {
-
     margin: 15px 0px;
-/*     background-color: #8298AB; */
     border-bottom: 2px solid #dadada;
     border-radius: 6px;
     border-bottom-color: rgb(218, 218, 218);
     background-color: rgb(255, 255, 255);
-/*     border-bottom-width: 1px; */
 }
 
 .jobs-table-header {
@@ -179,8 +178,50 @@ body {
     border-style: solid;
 }
 
-.json-table-item-label{
+.json-table-item-label {
     margin: 3px;
 }
 
+.detalization-item {
+    border-left: 1px;
+    border-right: 1px;
+    border-style: solid;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-color: #dadada;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.json-table-detalization .detalization-item:last-of-type {
+    border-bottom: 1px;
+    border-color: #dadada;
+    border-style: solid;
+}
+
+.json-table-detalization .detalization-item:first-of-type {
+    border-top: 1px;
+    border-color: #dadada;
+    border-style: solid;
+}
+
+.detalization-item.row {
+    background-color: #fff;
+}
+
+.detalization-item-text {
+    display: inline;
+}
+
+.detalization-item-link:hover {
+    text-decoration: none;
+}
+
+.detalization-item-image {
+    display: inline;
+    height: 25px;
+    width: 25px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
 
