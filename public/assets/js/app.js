@@ -3,18 +3,22 @@ require( [
     "skill-compass/views/selection",
     "skill-compass/views/statistic",  
     "skill-compass/views/jobs-table",  
+    "skill-compass/views/navigation",
     "skill-compass/collections/groups",
     "skill-compass/collections/skills",
+    
     "bootstrap"
-         ], function( AreaView, SelectionView, StatisticView, JobsTableView, Groups, Skills  ) {   
+         ], function( AreaView, SelectionView, StatisticView, JobsTableView, Navigation, Groups, Skills ) {   
     
-        var areaView = new AreaView();    
-        $("#area-content").append( areaView.render().$el );
+    var areaView = new AreaView();    
+    $("#area-content").append( areaView.render().$el );
     
+
     
     var Workspace = Backbone.Router.extend({
         
         initialize: function(options) {
+            this.navigation = new Navigation();
             this.groups = new Groups();
 
             this.skills = new Skills();
@@ -45,28 +49,49 @@ require( [
         saveSelection: function (){
             localStorage.setItem('selection',  JSON.stringify(this.skills));
         },
-
+        
         routes: {
+            "*any"             : "_commutator"
+        },
+        
+        _routes: {
             ""          : "selection",
             "selection" : "selection",  
             "jobs"      : "jobs",
             "charts"    : "charts"
         },
 
-        selection: function() {
+        _commutator : function() {
+            var route = Backbone.history.getFragment();
+            this.navigation.setActiveTab( route );
+            var self = this;
+            
+            $('#step-content').fadeOut(function(){
+                self[ self._routes[ route ] ]( function() {
+                    $('#step-content').fadeIn();
+                } );
+            })
+        },
+
+
+        selection: function(callback) {
             var selectionView = new SelectionView( {groups : this.groups, skills : this.skills} );
             $('#step-content').empty().append( selectionView.render().$el );   
+            callback();
+
         },
         
-        charts : function() {
+        charts : function(callback) {
             var statistic = new StatisticView({skills : this.skills});
             $('#step-content').empty().append( statistic.render().$el );  
-            statistic.show();                      
+            statistic.show();  
+            callback();
         },
         
-        jobs : function() {
+        jobs : function(callback) {
             var jobsTable = new JobsTableView({skills : this.skills});
-            $('#step-content').empty().append( jobsTable.render().$el );                        
+            $('#step-content').empty().append( jobsTable.render().$el );  
+            callback();
         },
         
         

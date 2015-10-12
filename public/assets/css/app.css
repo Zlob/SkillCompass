@@ -97,13 +97,6 @@ body {
     height: 55px;
 }
 
-.navigation-view {
-    text-align: center;
-    vertical-align: middle;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
 .group-item {
     cursor: pointer;
 }
@@ -225,19 +218,37 @@ body {
     margin-right: 3px;
 }
 
-.arrow{
-    
-    width: 90px;  
 
-    margin-top: 39px;
+.app-navigation {
+  text-align:center;
 }
 
-.arrow-left {
-/* 	border-right: 60px solid #8298AB; */
+.app-navigation > li {
+  float:none;
+  display:inline-block;
+  vertical-align: top;
 }
 
-.arrow-right {
-/* 	border-left: 60px solid #8298AB; */
+.app-navigation > li > a {
+    border-radius: 50px;
+    background-color: #8298AB;
+    color: #dadada;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 15px;
+    width: 58px;
+    height: 58px;
+}
+
+.app-navigation > li > a:hover {
+    background-color: #314657;
+    color: #8298AB;
+}
+
+.app-navigation>li.active>a, .app-navigation>li.active>a:hover, .app-navigation>li.active>a:focus{
+    background-color: #314657;
+    color: #8298AB;
 }
 
 

@@ -46,6 +46,9 @@
                 </div>
             </div>
         </div>
+        <div id="navigation">
+            
+        </div>
         <div class="container">
                     <div id="step-content" class="row"></div> 
         </div>
