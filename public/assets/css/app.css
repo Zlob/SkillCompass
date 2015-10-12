@@ -225,3 +225,19 @@ body {
     margin-right: 3px;
 }
 
+.arrow{
+    
+    width: 90px;  
+
+    margin-top: 39px;
+}
+
+.arrow-left {
+/* 	border-right: 60px solid #8298AB; */
+}
+
+.arrow-right {
+/* 	border-left: 60px solid #8298AB; */
+}
+
+

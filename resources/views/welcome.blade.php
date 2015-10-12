@@ -46,7 +46,9 @@
                 </div>
             </div>
         </div>
-        <div id="main-content" class="container"></div> 
+        <div class="container">
+                    <div id="step-content" class="row"></div> 
+        </div>
         <footer id="footer">
             <div class="container">
                 <p class='text-center'><small>© 2015-<?php echo date('Y'); ?> &nbsp <a href="https://github.com/Zlob/">Макин Владислав</a> &nbsp <a href='https://github.com/Zlob/SkillCompass'><img src='assets/img/GitHub-Mark-32px.png'></a>  </small></p>
