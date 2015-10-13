@@ -12,9 +12,6 @@ require( [
          ], function( AreaView, SelectionView, StatisticView, JobsTableView, NavigationView, ErrorView, Groups, Skills ) {   
     
     var areaView = new AreaView();    
-    $("#area-content").append( areaView.render().$el );
-    
-
     
     var Router = Backbone.Router.extend({
         

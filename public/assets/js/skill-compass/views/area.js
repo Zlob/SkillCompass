@@ -7,7 +7,8 @@ define([
     var view = Backbone.Epoxy.View.extend({
         // Кэшируем html-шаблон
         template : _.template( tpl ),
-        tagName: 'li',
+        el: '#area-content',
+        
         events: {
             'click [data-eid="area-btn"]': "showSelection",
             'click [data-eid="msk-btn"]': "setMoskow",
@@ -18,7 +19,7 @@ define([
             this.dispetcher = Backbone.Events;
             this.collection = new Backbone.Collection([{'id' : 1, 'name' : 'Москва'},{'id' : 2, 'name' : 'Санкт-Петербург'}]);
             this.setModel( localStorage.getItem('areaId') || 1);
-            
+            this.render();            
         },
 
         render : function() {
