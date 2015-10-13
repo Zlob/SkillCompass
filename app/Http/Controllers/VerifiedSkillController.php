@@ -16,6 +16,6 @@ class VerifiedSkillController extends Controller
      */
     public function index()
     {
-        return VerifiedSkill::whereNotNull('group_id')->get()->toArray();
+        return VerifiedSkill::whereNotNull('group_id')->orderBy('name')->get()->toArray();
     }
 }
