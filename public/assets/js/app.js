@@ -4,21 +4,22 @@ require( [
     "skill-compass/views/statistic",  
     "skill-compass/views/jobs-table",  
     "skill-compass/views/navigation",
+    "skill-compass/views/error",
     "skill-compass/collections/groups",
     "skill-compass/collections/skills",
     
     "bootstrap"
-         ], function( AreaView, SelectionView, StatisticView, JobsTableView, Navigation, Groups, Skills ) {   
+         ], function( AreaView, SelectionView, StatisticView, JobsTableView, NavigationView, ErrorView, Groups, Skills ) {   
     
     var areaView = new AreaView();    
     $("#area-content").append( areaView.render().$el );
     
 
     
-    var Workspace = Backbone.Router.extend({
+    var Router = Backbone.Router.extend({
         
         initialize: function(options) {
-            this.navigation = new Navigation();
+            this.navigation = new NavigationView();
             this.groups = new Groups();
 
             this.skills = new Skills();
@@ -66,9 +67,9 @@ require( [
             this.navigation.setActiveTab( route );
             var self = this;
             
-            $('#step-content').fadeOut(function(){
+            $('#step-content').fadeOut('slow',function(){
                 self[ self._routes[ route ] ]( function() {
-                    $('#step-content').fadeIn();
+                    $('#step-content').fadeIn('slow');
                 } );
             })
         },
@@ -78,26 +79,49 @@ require( [
             var selectionView = new SelectionView( {groups : this.groups, skills : this.skills} );
             $('#step-content').empty().append( selectionView.render().$el );   
             callback();
-
         },
         
         charts : function(callback) {
-            var statistic = new StatisticView({skills : this.skills});
-            $('#step-content').empty().append( statistic.render().$el );  
-            statistic.show();  
-            callback();
+            if(this._checkSkillsSelected()){
+                var statistic = new StatisticView({skills : this.skills});
+                $('#step-content').empty().append( statistic.render().$el );  
+                statistic.show();  
+                callback();
+            }
+            else{
+                this.error(callback);
+            }
+
         },
         
         jobs : function(callback) {
-            var jobsTable = new JobsTableView({skills : this.skills});
-            $('#step-content').empty().append( jobsTable.render().$el );  
+            if(this._checkSkillsSelected()){
+                var jobsTable = new JobsTableView({skills : this.skills});
+                $('#step-content').empty().append( jobsTable.render().$el );
+                callback();
+            }
+            else{
+                this.error(callback);
+            }  
+
+        },
+        
+        error  : function(callback){
+            var error = new ErrorView();
+            $('#step-content').empty().append( error.render().$el );  
             callback();
         },
+        
+        _checkSkillsSelected : function(){
+            return this.skills.some(function(model){
+                return model.get('checked') === true;
+            });
+        }
         
         
          
     });
     
-    var router = new Workspace();     
+    var router = new Router();     
 
 });
