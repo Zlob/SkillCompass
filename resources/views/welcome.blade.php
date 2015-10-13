@@ -14,44 +14,48 @@
         <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script>
     </head>
     <body>
-        <nav class="navbar">            
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse navbar-left" >
-                    <ul class="nav navbar-nav nav-pills" id="area-content">
-                    </ul>
-                </div>  
-                <div class="collapse navbar-collapse navbar-right" >
-                    <ul class="nav navbar-nav nav-pills">
-                        <li><a class="navbar-btn" href="/about">О проекте</a></li>
-                    </ul>
-                </div>                    
-            </div>
-        </nav>
-        <div class="jumbotron dark-color">
-            <div class="logo container">
-                <h1 class="main-header">Skill</h1>
-                <img class="header-compass-img" src="http://www.snapagency.com/wp-content/uploads/2014/10/compass-icon.png">
-                <h1 class="main-header">Compass</h1>
-            </div>
-            <div class="message container">
-                <h2>узнай, чего ты стоишь</h2>
-            </div>
-        </div>
-        <div class="jumbotron-sub light-color">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <span>Свежая статистика по языкам программирования и смежным технологиям за три простых шага</span>
+        <div class="wrap">    
+            <div rel="main">
+                <nav class="navbar">            
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse navbar-left" >
+                            <ul class="nav navbar-nav nav-pills" id="area-content">
+                            </ul>
+                        </div>  
+                        <div class="collapse navbar-collapse navbar-right" >
+                            <ul class="nav navbar-nav nav-pills">
+                                <li><a class="navbar-btn" href="/about">О проекте</a></li>
+                            </ul>
+                        </div>                    
+                    </div>
+                </nav>
+                <div class="jumbotron dark-color">
+                    <div class="logo container">
+                        <h1 class="main-header">Skill</h1>
+                        <img class="header-compass-img" src="http://www.snapagency.com/wp-content/uploads/2014/10/compass-icon.png">
+                        <h1 class="main-header">Compass</h1>
+                    </div>
+                    <div class="message container">
+                        <h2>узнай, чего ты стоишь</h2>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="navigation">
-            
-        </div>
-        <div class="container">
+                <div class="jumbotron-sub light-color">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span>Свежая статистика по языкам программирования и смежным технологиям</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="navigation">
+
+                </div>
+                <div class="container">
                     <div id="step-content" class="row"></div> 
-        </div>
+                </div>
+            </div>
+        </div>        
         <footer id="footer">
             <div class="container">
                 <p class='text-center'><small>© 2015-<?php echo date('Y'); ?> &nbsp <a href="https://github.com/Zlob/">Макин Владислав</a> &nbsp <a href='https://github.com/Zlob/SkillCompass'><img src='assets/img/GitHub-Mark-32px.png'></a>  </small></p>

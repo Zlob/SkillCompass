@@ -61,11 +61,12 @@ require( [
 
         _commutator : function() {
             var route = Backbone.history.getFragment();
-            this.navigation.setActiveTab( route );
+            var routFunction = this._routes[ route ] ;
+            this.navigation.setActiveTab( routFunction );
             var self = this;
             
             $('#step-content').fadeOut('slow',function(){
-                self[ self._routes[ route ] ]( function() {
+                self[routFunction]( function() {
                     $('#step-content').fadeIn('slow');
                 } );
             })
