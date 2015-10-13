@@ -26,7 +26,13 @@ define([
             } );
 
             return this;
+        },
+        
+        show : function() {
+            $('#step-content').fadeIn();
         }
+        
+        
         
     });
 

@@ -65,49 +65,43 @@ require( [
             this.navigation.setActiveTab( routFunction );
             var self = this;
             
-            $('#step-content').fadeOut('slow',function(){
-                self[routFunction]( function() {
-                    $('#step-content').fadeIn('slow');
-                } );
+            var stepView = this[routFunction]().render();          
+            
+            $('#step-content').fadeOut('slow',function() {
+                $('#step-content').empty().append( stepView.$el );  
+                stepView.show();           
             })
         },
 
 
         selection: function(callback) {
-            var selectionView = new SelectionView( {groups : this.groups, skills : this.skills} );
-            $('#step-content').empty().append( selectionView.render().$el );   
-            callback();
+            return new SelectionView( {groups : this.groups, skills : this.skills} );
         },
         
         charts : function(callback) {
             if(this._checkSkillsSelected()){
-                var statistic = new StatisticView({skills : this.skills});
-                $('#step-content').empty().append( statistic.render().$el );  
-                statistic.show();  
-                callback();
+                return new StatisticView({skills : this.skills});
             }
             else{
-                this.error(callback);
+                return this.error();
             }
 
         },
         
         jobs : function(callback) {
             if(this._checkSkillsSelected()){
-                var jobsTable = new JobsTableView({skills : this.skills});
-                $('#step-content').empty().append( jobsTable.render().$el );
-                callback();
+                return new JobsTableView({skills : this.skills});
             }
             else{
-                this.error(callback);
+                return this.error();
             }  
 
         },
         
-        error  : function(callback){
-            var error = new ErrorView();
-            $('#step-content').empty().append( error.render().$el );  
-            callback();
+        error  : function(){
+            return new ErrorView();
+//             $('#step-content').empty().append( error.render().$el );  
+//             callback();
         },
         
         _checkSkillsSelected : function(){

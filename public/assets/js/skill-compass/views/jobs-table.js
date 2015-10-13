@@ -24,7 +24,7 @@ define([
             var self = this;
             this.$el.empty().append( this.template() ); 
 
-            $.ajax({
+            this.loaded = $.ajax({
                 method: "POST",
                 url: "api/jobs-by-skills",
                 data: { 
@@ -39,6 +39,12 @@ define([
             });   
 
             return this;
+        },
+        
+        show : function() {
+            $.when(this.loaded).then( function(){
+                $('#step-content').fadeIn(); 
+            });            
         },
         
         renderData : function(data) {

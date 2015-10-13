@@ -13,7 +13,11 @@ define([
         render : function() {      
             this.$el.empty().append( this.template() ); 
             return this;
-        }         
+        },
+        
+        show : function() {
+            $('#step-content').fadeIn();
+        }
         
     });
 

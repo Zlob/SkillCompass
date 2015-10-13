@@ -27,7 +27,8 @@ define([
         },
                 
         show : function () {
-            _.each(this.items, function(view){view.showItem()});       
+            _.each(this.items, function(view){view.showItem()});    
+            $('#step-content').fadeIn();
         }
         
         
