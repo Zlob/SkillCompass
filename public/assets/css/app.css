@@ -113,7 +113,7 @@ body {
 }
 
 .statistic-item {
-    margin: 15px 0px;
+    margin: 20px 0px 0px 0px;
     border-bottom: 2px solid #dadada;
     border-radius: 6px;
     border-bottom-color: rgb(218, 218, 218);
@@ -250,4 +250,30 @@ body {
 .app-navigation>li.active>a, .app-navigation>li.active>a:hover, .app-navigation>li.active>a:focus{
     background-color: #314657;
     color: #8298AB;
+}
+
+#step-content {
+    margin-bottom: 20px;
+}
+
+.groups {
+    margin-bottom: 0px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrap {
+  min-height: 100%;
+}
+
+.wrap [rel="main"] {
+  padding-bottom: 50px;
+}
+
+footer {
+  height: 50px;
+  margin-top: -50px;
 }
