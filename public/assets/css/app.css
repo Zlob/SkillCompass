@@ -1,283 +1,223 @@
-html, body {
-    height: 100%;
+.dark-theme {
+  background-color: #314657;
+  color: #f2f2f2;
+  background-image: url(/assets/img/black-lozenge.png);
 }
-
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: table;
-    font-weight: 100;
-    font-family: 'Trebuchet MS','Open Sans',arial,sans-serif;
-    background-color: #f2f2f2;
+.medium-theme {
+  background-color: #8298ab;
+  color: #f2f2f2;
 }
-
-.navbar {
-    margin: 0px;      
+.light-theme {
+  background-color: #f2f2f2;
+  color: #314657;
 }
-
-.navbar-btn {
-    color: #888;
-    font-size: 17px;
-    text-transform: uppercase;      
-}
-
-.jumbotron{
-    text-align: center;
-    vertical-align: middle;
-    background-image: url(/assets/img/black-lozenge.png);
-    padding: 60px;
-    margin: 0px;
-}
-
-.main-header{
-    margin-top: 10px;
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-
-.header-compass-img {
-    display: inline-block;
-    /*height: 100%;*/
-    width: 64px;
-    height: 64px;
-    vertical-align: middle;
-}
-
-.dark-color {
-    background-color: #314657;
-    color: #fff;
-    border: none;
-}       
-
-
-.jumbotron-sub{
-    text-align: center;
-    vertical-align: middle;
-    padding: 20px;
-}      
-
-.light-color {
-    background-color: #8298AB;
-    color: #314657;
-
-}
-
-.modal-header {
-    border: none;
-    text-align: center;
-}
-
-.modal-footer {
-    border: none;
-    text-align: center;
-}
-
-.step-view {
-    margin-bottom: 20px;
-}
-
-.btn-round {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: none;
-    ! important;
-    outline-style: none;
-} 
-
-
-
-.btn-round.btn-lg {
-    width: 55px;
-    height: 55px;
-}
-
-.group-item {
-    cursor: pointer;
-}
-
-
-.chart {
-    display: inline-block;
-}
-
-.statistic-item-label {
-    margin-top: 10px;
-    text-align: center;
-    border-bottom: 2px dotted #dadada;
-}
-
-.statistic-item {
-    margin: 20px 0px 0px 0px;
-    border-bottom: 2px solid #dadada;
-    border-radius: 6px;
-    border-bottom-color: rgb(218, 218, 218);
-    background-color: rgb(255, 255, 255);
-}
-
-.step-content {
-    margin-top: 20px;
-}
-
-.jobs-table-header {
-    padding: 0px;
-} 
-
-.jobs-table-header-left {
-    border-radius: 4px 0px 0px 0px;
-}
-
-.jobs-table-header-right {
-    border-radius: 0px 4px 0px 0px;
-}
-
-.jobs-table-header-center {
-    border-radius: 0px;
-}
-
-.glyphicon-triangle-bottom, .glyphicon-triangle-top {
-    float: right;
-    margin-top: 2px;
-}
-
-.jobs-table-cell {
-    border-left: 1px;
-    border-right: 1px;
-    border-bottom: 0px;
-    border-top: 0px;
-    border-color: #dadada;
-    border-style: solid;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    background-color: transparent;
-}
-
-.jobs-table-row {
-    cursor: pointer;
-    background-color: #fff;
-}
-
-.jobs-table-row:hover {
-    background-color: #dadada;
-}
-
-.sorted-column-header {
-    padding-left: 26px;
-}
-
-.jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {
-    border-bottom: 1px;
-    border-color: #dadada;
-    border-style: solid;
-}
-
-.json-table-item-label {
-    margin: 3px;
-}
-
-.detalization-item {
-    border-left: 1px;
-    border-right: 1px;
-    border-style: solid;
-    border-bottom: 0px;
-    border-top: 0px;
-    border-color: #dadada;
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-
-.json-table-detalization .detalization-item:last-of-type {
-    border-bottom: 1px;
-    border-color: #dadada;
-    border-style: solid;
-}
-
-.json-table-detalization .detalization-item:first-of-type {
-    border-top: 1px;
-    border-color: #dadada;
-    border-style: solid;
-}
-
-.detalization-item.row {
-    background-color: #fff;
-}
-
-.detalization-item-text {
-    display: inline;
-}
-
-.detalization-item-link:hover {
-    text-decoration: none;
-}
-
-.detalization-item-image {
-    display: inline;
-    height: 25px;
-    width: 25px;
-    margin-left: 3px;
-    margin-right: 3px;
-}
-
-
-.app-navigation {
-  text-align:center;
-}
-
-.app-navigation > li {
-  float:none;
-  display:inline-block;
-  vertical-align: top;
-}
-
-.app-navigation > li > a {
-    border-radius: 50px;
-    background-color: #8298AB;
-    color: #dadada;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    padding: 15px;
-    width: 58px;
-    height: 58px;
-}
-
-.app-navigation > li > a:hover {
-    background-color: #314657;
-    color: #8298AB;
-}
-
-.app-navigation>li.active>a, .app-navigation>li.active>a:hover, .app-navigation>li.active>a:focus{
-    background-color: #314657;
-    color: #8298AB;
-}
-
-#step-content {
-    margin-bottom: 20px;
-}
-
-.groups {
-    margin-bottom: 0px;
-}
-
 html,
 body {
   height: 100%;
 }
-
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: table;
+  font-weight: 100;
+  font-family: 'Trebuchet MS', 'Open Sans', arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #314657;
+}
 .wrap {
   min-height: 100%;
 }
-
 .wrap [rel="main"] {
   padding-bottom: 50px;
 }
-
 footer {
   height: 50px;
   margin-top: -50px;
+}
+.navbar {
+  margin: 0px;
+}
+.navbar-btn {
+  color: #8298ab;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.jumbotron {
+  text-align: center;
+  vertical-align: middle;
+  padding: 60px;
+  margin: 0px;
+  border: none;
+  background-color: #314657;
+  color: #f2f2f2;
+  background-image: url(/assets/img/black-lozenge.png);
+}
+.main-header {
+  margin-top: 10px;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.header-compass-img {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  vertical-align: middle;
+}
+.jumbotron-sub {
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px;
+  background-color: #8298ab;
+  color: #f2f2f2;
+}
+.modal-header {
+  border: none;
+  text-align: center;
+}
+.modal-footer {
+  border: none;
+  text-align: center;
+}
+.step-view {
+  margin-bottom: 20px;
+}
+.group-item {
+  cursor: pointer;
+}
+.chart {
+  display: inline-block;
+}
+.statistic-item-label {
+  margin-top: 10px;
+  text-align: center;
+  border-bottom: 2px dotted #dadada;
+}
+.statistic-item {
+  margin: 20px 0px 0px 0px;
+  border-bottom: 2px solid #dadada;
+  border-right: 2px solid #dadada;
+  border-radius: 6px;
+  border-bottom-color: #dadada;
+  background-color: #ffffff;
+}
+.step-content {
+  margin-top: 20px;
+}
+.jobs-table-header {
+  padding: 0px;
+}
+.jobs-table-header-left {
+  border-radius: 4px 0px 0px 0px;
+}
+.jobs-table-header-right {
+  border-radius: 0px 4px 0px 0px;
+}
+.jobs-table-header-center {
+  border-radius: 0px;
+}
+.jobs-table-cell {
+  border-left: 1px;
+  border-right: 1px;
+  border-bottom: 0px;
+  border-top: 0px;
+  border-color: #dadada;
+  border-style: solid;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: transparent;
+}
+.jobs-table-row {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+.jobs-table-row:hover {
+  background-color: #dadada;
+}
+.sorted-column-header {
+  padding-left: 26px;
+}
+.jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {
+  border-bottom: 1px;
+  border-color: #dadada;
+  border-style: solid;
+}
+.json-table-item-label {
+  margin: 3px;
+  background-color: #8298ab;
+  color: #f2f2f2;
+}
+.detalization-item {
+  border-left: 1px;
+  border-right: 1px;
+  border-style: solid;
+  border-bottom: 0px;
+  border-top: 0px;
+  border-color: #dadada;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.json-table-detalization .detalization-item:last-of-type {
+  border-bottom: 1px;
+  border-color: #dadada;
+  border-style: solid;
+}
+.json-table-detalization .detalization-item:first-of-type {
+  border-top: 1px;
+  border-color: #dadada;
+  border-style: solid;
+}
+.detalization-item.row {
+  background-color: #ffffff;
+}
+.detalization-item-text {
+  display: inline;
+}
+.detalization-item-link:hover {
+  text-decoration: none;
+}
+.detalization-item-image {
+  display: inline;
+  height: 25px;
+  width: 25px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.app-navigation {
+  text-align: center;
+}
+.app-navigation > li {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+}
+.app-navigation > li > a {
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding: 15px;
+  width: 58px;
+  height: 58px;
+  background-color: #8298ab;
+  color: #f2f2f2;
+}
+.badge {
+  background-color: #8298ab;
+  color: #f2f2f2;
+}
+.app-navigation > li > a:hover,
+.app-navigation > li.active > a,
+.app-navigation > li.active > a:hover,
+.app-navigation > li.active > a:focus {
+  background-color: #314657;
+  color: #f2f2f2;
+  background-image: url(/assets/img/black-lozenge.png);
+}
+#step-content {
+  margin-bottom: 20px;
+}
+.groups {
+  margin-bottom: 0px;
 }

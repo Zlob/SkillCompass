@@ -23,4 +23,4 @@ require.config({
 });
 
 // Загружаем наше приложение (главный скрипт)
-require( [ "app" ] );
+require( [ "dist" ] );

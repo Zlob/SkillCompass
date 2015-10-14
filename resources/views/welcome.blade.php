@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,300,700">
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js">
-        <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css">
         <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script>
     </head>
     <body>
@@ -30,7 +30,7 @@
                         </div>                    
                     </div>
                 </nav>
-                <div class="jumbotron dark-color">
+                <div class="jumbotron">
                     <div class="logo container">
                         <h1 class="main-header">Skill</h1>
                         <img class="header-compass-img" src="http://www.snapagency.com/wp-content/uploads/2014/10/compass-icon.png">
@@ -40,7 +40,7 @@
                         <h2>узнай, чего ты стоишь</h2>
                     </div>
                 </div>
-                <div class="jumbotron-sub light-color">
+                <div class="jumbotron-sub">
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">

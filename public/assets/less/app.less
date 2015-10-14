@@ -1,0 +1,266 @@
+@dark-color : #314657;
+@medium-color : #8298AB;
+@light-color : #f2f2f2;
+@border-color : #dadada;
+@accent-color : #fff;
+@button-text-size: 20px;
+
+.dark-theme {
+    background-color: @dark-color;
+    color: @light-color; 
+    background-image: url(/assets/img/black-lozenge.png);
+}
+
+.medium-theme {
+    background-color: @medium-color;
+    color: @light-color; 
+}
+
+.light-theme {
+    background-color: @light-color;
+    color: @dark-color; 
+}
+
+html, body {
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+    font-weight: 100;
+    font-family: 'Trebuchet MS', 'Open Sans', arial, sans-serif;
+    .light-theme
+}
+
+.wrap {
+  min-height: 100%;
+}
+
+.wrap [rel="main"] {
+  padding-bottom: 50px;
+}
+
+footer {
+  height: 50px;
+  margin-top: -50px;
+}
+
+.navbar {
+    margin: 0px;      
+}
+
+.navbar-btn {
+    color: @medium-color;
+    font-size: @button-text-size;
+    text-transform: uppercase;      
+}
+
+.jumbotron {
+    text-align: center;
+    vertical-align: middle;
+    padding: 60px;
+    margin: 0px;
+    border: none;
+    .dark-theme;
+}
+
+.main-header {
+    margin-top: 10px;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.header-compass-img {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    vertical-align: middle;
+}
+
+.jumbotron-sub {
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px;
+    .medium-theme;
+}      
+
+.modal-header {
+    border: none;
+    text-align: center;
+}
+
+.modal-footer {
+    border: none;
+    text-align: center;
+}
+
+.step-view {
+    margin-bottom: 20px;
+}
+
+.group-item {
+    cursor: pointer;
+}
+
+.chart {
+    display: inline-block;
+}
+
+.statistic-item-label {
+    margin-top: 10px;
+    text-align: center;
+    border-bottom: 2px dotted #dadada;
+}
+
+.statistic-item {
+    margin: 20px 0px 0px 0px;
+    border-bottom: 2px solid #dadada;
+    border-right: 2px solid #dadada;
+    border-radius: 6px;
+    border-bottom-color: @border-color;
+    background-color: @accent-color;
+}
+
+.step-content {
+    margin-top: 20px;
+}
+
+.jobs-table-header {
+    padding: 0px;
+} 
+
+.jobs-table-header-left {
+    border-radius: 4px 0px 0px 0px;
+}
+
+.jobs-table-header-right {
+    border-radius: 0px 4px 0px 0px;
+}
+
+.jobs-table-header-center {
+    border-radius: 0px;
+}
+
+.jobs-table-cell {
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-color: @border-color;
+    border-style: solid;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: transparent;
+}
+
+.jobs-table-row {
+    cursor: pointer;
+    background-color: @accent-color;
+}
+
+.jobs-table-row:hover {
+    background-color: #dadada;
+}
+
+.sorted-column-header {
+    padding-left: 26px;
+}
+
+.jobs-table .jobs-table-item:last-of-type .jobs-table-row .jobs-table-cell {
+    border-bottom: 1px;
+    border-color: @border-color;
+    border-style: solid;
+}
+
+.json-table-item-label {
+    margin: 3px;
+    .medium-theme;
+}
+
+.detalization-item {
+    border-left: 1px;
+    border-right: 1px;
+    border-style: solid;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-color: @border-color;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.json-table-detalization .detalization-item:last-of-type {
+    border-bottom: 1px;
+    border-color: @border-color;
+    border-style: solid;
+}
+
+.json-table-detalization .detalization-item:first-of-type {
+    border-top: 1px;
+    border-color: @border-color;
+    border-style: solid;
+}
+
+.detalization-item.row {
+    background-color: @accent-color;
+}
+
+.detalization-item-text {
+    display: inline;
+}
+
+.detalization-item-link:hover {
+    text-decoration: none;
+}
+
+.detalization-item-image {
+    display: inline;
+    height: 25px;
+    width: 25px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.app-navigation {
+  text-align:center;
+}
+
+.app-navigation > li {
+  float:none;
+  display:inline-block;
+  vertical-align: top;
+}
+
+.app-navigation > li > a {
+    border-radius: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: @button-text-size;
+    padding: 15px;
+    width: 58px;
+    height: 58px;
+    .medium-theme;
+}
+
+.badge {
+    .medium-theme;
+}
+
+.app-navigation > li > a:hover, .app-navigation>li.active>a, .app-navigation>li.active>a:hover, .app-navigation>li.active>a:focus {
+    .dark-theme;
+}
+
+#step-content {
+    margin-bottom: 20px;
+}
+
+.groups {
+    margin-bottom: 0px;
+}
+
+
+
