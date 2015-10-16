@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js">
         <link rel="stylesheet" type="text/css" href="/assets/css/app.min.css">
+        <script type="text/javascript" src="/assets/js/metrics/yandex-metrika.js"></script>
     </head>
     <body>
         <div class="wrap">    
@@ -46,6 +47,9 @@
             <div class="container">
                 <p class='text-center'><small>© 2015-<?php echo date('Y'); ?> &nbsp <a href="https://github.com/Zlob/">Макин Владислав</a> &nbsp <a href='https://github.com/Zlob/SkillCompass'><img src='assets/img/GitHub-Mark-32px.png'></a>  </small></p>
             </div>
+            <!-- Yandex.Metrika counter -->
+            <noscript><div><img src="https://mc.yandex.ru/watch/33083803" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+            <!-- /Yandex.Metrika counter -->
         </footer>
     </body>
 </html>
