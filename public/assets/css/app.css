@@ -224,3 +224,12 @@ footer {
 .group-name {
   margin-left: 5px;
 }
+.about-content {
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.about-content > p {
+  margin-top: 10px;
+  font-size: 16px;
+}
