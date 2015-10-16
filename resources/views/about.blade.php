@@ -1,46 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SkillCompass</title>
-        <meta charset="utf-8">
-        <meta name="description" content="Statistic about programming languages and technologies">
-        <meta name="viewport" content="width=1024">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,300,700">
-        <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js">
-        <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
-<!--         <script data-main="assets/js/requirejs-config" src="/assets/bower_components/requirejs/require.js"></script> -->
-    </head>
-    <body>
-        <nav class="navbar">            
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse navbar-right" >
-                    <ul class="nav navbar-nav nav-pills">
-                        <li><a class="navbar-btn" href="/">Главная</a></li>
-                    </ul>
-                </div>                    
-            </div>
-        </nav>
-        <div class="jumbotron dark-color">
-            <div class="logo container">
-                <h1 class="main-header">Skill</h1>
-                <img class="header-compass-img" src="http://www.snapagency.com/wp-content/uploads/2014/10/compass-icon.png">
-                <h1 class="main-header">Compass</h1>
-            </div>
-            <div class="message container">
-                <h2>узнай, чего ты стоишь</h2>
-            </div>
-        </div>
-        <div class="jumbotron-sub light-color">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <span>Свежая статистика по языкам программирования и смежным технологиям за три простых шага</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="main-content" class="container"></div>  
-    </body>
-</html>
+@extends('app')
+
+@section('navbar')
+<nav class="navbar">            
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse navbar-right" >
+            <ul class="nav navbar-nav nav-pills">
+                <li><a class="navbar-btn" href="/">Главная</a></li>
+            </ul>
+        </div>                    
+    </div>
+</nav>
+@stop
+
+@section('app-navigation')
+
+@stop
+
+@section('content')
+<div class='row'>
+    <div class='col-md-8 col-md-offset-2 col-sm-12 about-content'>
+        <p>
+            <strong>SkillCompass</strong> - проект, призванный помочь разработчикам быть востребованными на рынке труда. Здесь вы найдете статистику популярности той или иной технологии, сможете посмотреть, с какими инструментами её чаще всего используют, а самое главное - найти вакансии, сответствующие вашим навыкам. <strong>SkillCompas</strong> так же поможет оценить, каких навыков вам не хватает, что бы претендовать на более высокую зарплату.
+        </p>
+        <p>На данный момент, статистика и поиск вакансий доступны только по Москве и Санкт-Петербургу.</p>
+        <p>Для поиска и анализа вакансий <strong>SkillCompas</strong> использует открытый <a href='https://api.hh.ru'>API</a> <a href='https://hh.ru'>HeadHunter</a>, без которого проект был бы невозможен. Так же, за помощь в создании сайта хочу выразить балгодарность моему другу и коллеге <a href='https://github.com/krustnic'>Krustnic</a>.</p>
+        <p>P.S. Код проекта расположен на <a href="https://github.com/Zlob/SkillCompass">GitHub</a>. Обо всех перебоях в работе сайта, а так же с вопросами и пожеланиями просьба писать в раздел <a href="https://github.com/Zlob/SkillCompass/issues">issues</a>.</p>
+    </div>
+
+</div>
+@stop
