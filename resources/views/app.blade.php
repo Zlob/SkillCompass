@@ -4,7 +4,7 @@
         <title>SkillCompass</title>
         <meta charset="utf-8">
         <meta name="description" content="Statistic about programming languages and technologies">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=1024">
         <meta name="csrf-token" content="{{{ Session::token() }}}">
         <link rel="icon" type="image/png" href="assets/img/favicon-32x32.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic">
