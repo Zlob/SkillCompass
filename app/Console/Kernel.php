@@ -58,6 +58,6 @@ class Kernel extends ConsoleKernel
             $job = $this->app['App\Models\Job'];            
             $parser = new Parser([$hhGrabber], $job);
             $parser->parse();       
-        })->everyMinute();
+        })->daily();
     }
 }
