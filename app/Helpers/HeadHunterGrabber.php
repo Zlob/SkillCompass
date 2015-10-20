@@ -34,6 +34,7 @@
                             'only_with_salary' => true,   //только с указанием зарплаты
                             'currency'         => 'RUR',          //валюта
                             'area'             => $area,
+                            'text'             => 'web OR веб OR forntend OR backend OR JavaScript OR PHP OR HTML OR CSS',
                             'page'             => $page
                         ]
                     ];

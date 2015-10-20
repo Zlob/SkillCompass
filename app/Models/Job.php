@@ -185,7 +185,7 @@ class Job extends Model {
     private function checkActual()
     {
         $currentDate = new \DateTime();
-        $threeDays = new \DateInterval('P3D');
+        $threeDays = new \DateInterval('P1D');
         $date = $currentDate->sub($threeDays)->format('Y-m-d');
         if($this->endda >= $date){
             return true;
