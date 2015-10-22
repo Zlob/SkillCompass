@@ -10,6 +10,7 @@ define([
         template : _.template( tpl ),       
 
         initialize : function( options ) {
+            this.chart_info = options.chart_info;
             this.dispetcher = Backbone.Events;
             this.dispetcher.on('area-change', this.showChart, this);
         },
@@ -20,27 +21,12 @@ define([
         },
         
         showChart : function () {
-            var self = this;
-            
-            $.ajax({
-                method: "POST",
-                url: "api/popular-chart-info",
-                data: { 
-                    id: self.model.get('id'),
-                    areaId: localStorage.getItem('areaId') || 1
-                },
-                headers: {
-                "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
-                }
-            }).done(function(rawData) {
-                var data = self.prepareData(rawData);
-                var ctx = self.$("#popular-chart").get(0).getContext('2d');
-                self.myNewChart = new Chart(ctx).Line(
-                    data,
-                    self.getChartOptions(data)
-                    
-                );
-            });          
+            var data = this.prepareData(this.chart_info);
+            var ctx = this.$("#popular-chart").get(0).getContext('2d');
+            this.myNewChart = new Chart(ctx).Line(
+                data,
+                this.getChartOptions(data)                    
+            );        
         },
         
         prepareData : function(rawData) {

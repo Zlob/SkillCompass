@@ -9,9 +9,9 @@ define([
         template : _.template( tpl ),       
 
         initialize : function( options ) {
+            this.chart_info = options.chart_info;
             this.dispetcher = Backbone.Events;
             this.dispetcher.on('area-change', this.showChart, this);
-//             this.skills = options.skills;
         },
 
         render : function() {      
@@ -20,34 +20,20 @@ define([
         },
         
         showChart : function () {
-            var self = this;
-            
-            $.ajax({
-                method: "POST",
-                url: "api/related-chart-info",
-                data: { 
-                    id: self.model.get('id'),
-                    areaId: localStorage.getItem('areaId') || 1
-                },
-                headers: {
-                "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+            var data = this.prepareData(this.chart_info);
+            var ctx = this.$("#related-chart").get(0).getContext('2d');
+            this.myNewChart = new Chart(ctx).Bar(
+                data,
+                {
+                    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+                    scaleLabel: "<%=value%>%",
+                    scaleOverride: true,
+                    scaleSteps: 10,
+                    scaleStepWidth: 10,
+                    scaleStartValue: 0,
+                    responsive: true,
                 }
-            }).done(function(rawData) {
-                var data = self.prepareData(rawData);
-                var ctx = self.$("#related-chart").get(0).getContext('2d');
-                self.myNewChart = new Chart(ctx).Bar(
-                    data,
-                    {
-                        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
-                        scaleLabel: "<%=value%>%",
-                        scaleOverride: true,
-                        scaleSteps: 10,
-                        scaleStepWidth: 10,
-                        scaleStartValue: 0,
-                        responsive: true,
-                    }
-                );
-            });          
+            );       
         },
         
         prepareData : function(rawData) {

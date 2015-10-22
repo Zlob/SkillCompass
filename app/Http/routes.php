@@ -21,7 +21,6 @@ Route::get('/about', function () {
 
 Route::resource('api/group', 'GroupController');
 Route::resource('api/skill', 'VerifiedSkillController');
-Route::post('api/popular-chart-info', 'ChartController@getPopularChartInfo');
-Route::post('api/related-chart-info', 'ChartController@getrelatedChartInfo');
+Route::post('api/statistic-info', 'ChartController@getStatisticInfo');
 Route::post('api/jobs-by-skills', 'ChartController@getJobsBySkills');
 

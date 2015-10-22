@@ -30,9 +30,6 @@ define([
                 data: { 
                     skillIds: self.getSkillIds(),
                     areaId: localStorage.getItem('areaId') || 1
-                },
-                headers: {
-                    "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
                 }
             }).done(function(data) {
                 self.renderData(data);             

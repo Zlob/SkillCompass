@@ -10,21 +10,26 @@ use App\Helpers\JobsGrouperator\JobsGrouperator;
 
 class ChartController extends Controller
 {
-    /**
-     * Show the specified photo comment.
-     *
-     * @param  int  $photoId
-     * @param  int  $commentId
-     * @return Response
-     */
-    public function getPopularChartInfo()
+    
+    public function getStatisticInfo()
     {
-        $id = Input::get('id');
+        $skills_ids = Input::get('skills_ids');
         $areaId = Input::get('areaId');
-        $result = [];
-        
+        $result  = [];
+        foreach($skills_ids as $skillId){
+            $result[$skillId]['popular_chart_info'] = $this->getPopularChart($skillId, $areaId);
+            $result[$skillId]['related_chart_info'] = $this->getRelatedChart($skillId, $areaId);
+        }
+        return $result;        
+    }
+    
+    
+    private function getPopularChart($id, $areaId)
+    {
         //получаем даты
         $dates = $this->getDates(); 
+        $result = [];
+        //считаем для каждой даты статистику
         foreach($dates as $date){
             $countInMonth = DB::table('job_verified_skill')
                 ->join('jobs', 'job_verified_skill.job_id', '=', 'jobs.id')
@@ -38,15 +43,11 @@ class ChartController extends Controller
             $result[] = $item;
         }
         return $result;
-
-        //считаем для каждой даты статистику
     }
     
-    public function getRelatedChartInfo()
+    
+    private function getRelatedChart($id, $areaId)
     {
-        $id = Input::get('id');
-        $areaId = Input::get('areaId');
-                
         //получаем все скиллы
         $skills_ids = DB::table('skills')->where('verified_skill_id', $id)->lists('id');
         if (!$skills_ids) {
@@ -75,8 +76,7 @@ class ChartController extends Controller
             $esultItem->total_count = $this->getPercentage($jobs_count, $esultItem->total_count);
         }
         
-        return $result;
-        
+        return $result;    
     }
     
     public function getJobsBySkills(Job $job)

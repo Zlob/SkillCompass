@@ -16,19 +16,36 @@ define([
         render : function() {      
             var self = this;
             this.$el.empty().append( this.template() ); 
-            this.skills.each(function(model){
-                if(model.get('checked') == true){
-                    var statisticItem = new StatisticItem({model: model});
-                    this.items.push(statisticItem);
-                     self.$("[data-eid=statistic]").append(statisticItem.render().$el);
+            
+            var skillIds = this.skills.filter(function(model){
+                return model.get('checked');
+            }).map(function(model){
+                return model.get('id');
+            });
+            
+            this.promise = $.ajax({
+                method: "POST",
+                url: "api/statistic-info",
+                data: { 
+                    skills_ids: skillIds,
+                    areaId: localStorage.getItem('areaId') || 1
                 }
-            }, this);
+            });
+                        
             return this;
         },
                 
         show : function () {
-            _.each(this.items, function(view){view.showItem()});    
-            $('#step-content').fadeIn();
+            var self = this;
+            $.when(this.promise).then(function(rawData) {
+                $('#step-content').fadeIn();
+                _.each(rawData, function(statisticData, id){
+                    var statisticItem = new StatisticItem({model: self.skills.get(id), popular_chart_info: statisticData.popular_chart_info, related_chart_info: statisticData.related_chart_info});
+                    self.items.push(statisticItem);
+                    self.$("[data-eid=statistic]").append(statisticItem.render().$el);
+                });
+                _.each(self.items, function(view){view.showItem()});   
+            })
         }
         
         

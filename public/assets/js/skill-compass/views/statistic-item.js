@@ -9,17 +9,18 @@ define([
         // Кэшируем html-шаблон
         template : _.template( tpl ),       
 
-        initialize : function( ) {
-            
+        initialize : function( options ) {
+            this.popular_chart_info = options.popular_chart_info;
+            this.related_chart_info = options.related_chart_info;
         },
 
         render : function() {      
             this.$el.empty().append( this.template(this.model.toJSON()) );  
             
-            this.popularChart = new PopularChart({model: this.model});
+            this.popularChart = new PopularChart({model: this.model, chart_info: this.popular_chart_info});
             this.$('[data-eid="popular-chart"]').empty().append(this.popularChart.render().$el);
             
-            this.relatedChart = new RelatedChart({model: this.model});
+            this.relatedChart = new RelatedChart({model: this.model, chart_info: this.related_chart_info});
             this.$('[data-eid="related-chart"]').empty().append(this.relatedChart.render().$el);
             
             return this;
