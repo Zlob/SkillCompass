@@ -53,12 +53,12 @@ define([
         sortData : function(data, field, is_asc) {
             if(is_asc){
                 return _.sortBy(data, function(item){
-                    return item.aggregation[field];
+                    return parseInt(item.aggregation[field]);
                 });                
             }               
             else{
                 return _.sortBy(data, function(item){
-                    return item.aggregation[field];                    
+                    return parseInt(item.aggregation[field]);                    
                 }).reverse();
             }
         },
