@@ -59,63 +59,70 @@ class ApiTest extends TestCase
         );
     }
     
-    public function testApiPopularChartInfo()
+    public function testApiStatisticInfo()
     {
-        $this->post('api/popular-chart-info', ['id' => 100, 'areaId' => 2])
-            ->seeJsonLike(
-            new AnyArray(
-                new AnyObject(
-                    [
-                        'hasFields' => [
-                            "total_count" => new AnyInteger(['min' => 0]),
-                            "name" => new AnyString([
-                                'enum' => [
-                                    'January',
-                                    'February',
-                                    'March',
-                                    'April',
-                                    'May',
-                                    'June',
-                                    'July',
-                                    'August',
-                                    'September',
-                                    'October',
-                                    'November',
-                                    'December'
-                                ]
-                            ]),
-                        ],
-                        'strictMode' => true
-                    ]
-                )
+        $relatedInfoObject = new AnyArray(
+            new AnyObject(
+                [
+                    'hasFields' => [
+                        "total_count" => new AnyInteger(['min' => 0]),
+                        "name" => new AnyString([
+                            'min' => '1',
+                            'max' => '20'
+                        ]),
+                    ],
+                    'strictMode' => true
+                ]
+            ),
+            [
+                'min' => 1,
+                'max' => 20
+            ]                
+        );
+        
+        $popularInfoObject = new AnyArray(
+            new AnyObject(
+                [
+                    'hasFields' => [
+                        "total_count" => new AnyInteger(['min' => 0]),
+                        "name" => new AnyString([
+                            'enum' => [
+                                'January',
+                                'February',
+                                'March',
+                                'April',
+                                'May',
+                                'June',
+                                'July',
+                                'August',
+                                'September',
+                                'October',
+                                'November',
+                                'December'
+                            ]
+                        ]),
+                    ],
+                    'strictMode' => true
+                ]
             )
         );
+        
+        $statisticInfoObject = new AnyObject(
+            [
+                'hasFields' => [
+                    'popular_chart_info' => $popularInfoObject,
+                    'related_chart_info' => $relatedInfoObject,                    
+                ],
+                'strictMode' => true
+            ]
+        );
+        
+        $statisticInfoArray = new AnyArray($statisticInfoObject);        
+        
+        $this->post('api/statistic-info', ['skills_ids' => [70, 100], 'areaId' => 2])
+            ->seeJsonLike($statisticInfoArray);
     }
     
-    public function testApiRelatedChartInfo()
-    {
-        $this->post('api/related-chart-info', ['id' => 100, 'areaId' => 2])
-            ->seeJsonLike(
-            new AnyArray(
-                new AnyObject(
-                    [
-                        'hasFields' => [
-                            "total_count" => new AnyInteger(['min' => 0]),
-                            "name" => new AnyString([
-                                'min' => '1',
-                                'max' => '20'
-                            ]),
-                        ],
-                        'strictMode' => true
-                    ]
-                ),
-                [
-                    'min' => 1,
-                    'max' => 20
-                ]                
-            )
-        );
-    }
     
     public function testApiJobsBySkills()
     {
