@@ -67,7 +67,7 @@ require( [
             
             var stepView = this[routFunction]().render();          
             
-            $('#step-content').fadeOut('slow',function() {
+            $('#step-content').fadeOut( 'fast', function() {
                 $('#step-content').empty().append( stepView.$el );  
                 stepView.show();           
             })

@@ -150,7 +150,8 @@ class ApiTest extends TestCase
                     'actual' => new AnyBoolean(),
                     'name' =>  new AnyString(['min' => 0]),
                     'additional_skills_count' => new AnyInteger(['min' => 0]),
-                    'additional_skills' => new AnyArray(new AnyObject(['hasFields' => ['name' => new AnyString()]]))
+                    'additional_skills' => new AnyArray(new AnyObject(['hasFields' => ['name' => new AnyString()]])),
+                    'have_skills' => new AnyArray(new AnyObject(['hasFields' => ['name' => new AnyString()]]))
                 ],
                 'strictMode' => true
             ]

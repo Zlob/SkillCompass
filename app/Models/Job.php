@@ -56,11 +56,7 @@ class Job extends Model {
         $currentDate = new \DateTime();
         $halfYear = new \DateInterval('P3M');
         $date = $currentDate->sub($halfYear)->format('Y-m-d');
-        $jobs = Job::with(['verifiedSkills' => function($query) use ($skillIds)
-                           {
-                               $query->whereNotIn('verified_skills.id', $skillIds);
-                           }
-                          ])
+        $jobs = Job::with('verifiedSkills')
             ->where('area_id', $areaId)
             ->where('endda', '>=', $date)
             ->whereHas('verifiedSkills', function ($query) use ($skillIds) 
@@ -72,8 +68,8 @@ class Job extends Model {
         
         $groups = [];
         foreach($jobs as $job){
-            $groupElement = $job->toGroupElement();
-            if($groupElement['additional_skills_count'] <=3 ){
+            $groupElement = $job->toGroupElement($skillIds);
+            if($groupElement['additional_skills_count'] <= 3 ){
                 $groups[$job->getGroupName($skillIds)][] = $groupElement;    
             }
             
@@ -154,24 +150,26 @@ class Job extends Model {
      * приводит вакансию к нужному массиву
      *
      */ 
-    public function toGroupElement()
+    public function toGroupElement($skillIds)
     {
         $result = [
             'id'     => $this->id,
             'name'   => $this->name,
             'cost'   => $this->cost,
             'url'    => $this->url,
-            'actual' => $this->checkActual(),  
-            'additional_skills_count' => $this->verifiedSkills->count()
-            
+            'actual' => $this->checkActual(),            
         ];
         $result['additional_skills'] = [];
-        if($this->verifiedSkills->count() > 0){
-            foreach($this->verifiedSkills as $verifiedSkill){
+        $result['have_skills'] = [];
+        foreach($this->verifiedSkills as $verifiedSkill){
+            $result['have_skills'][] = ['name' => $verifiedSkill->name];
+            if(!in_array($verifiedSkill->id, $skillIds)){
                 $result['additional_skills'][] = ['name' => $verifiedSkill->name];
             }
         }
-        else{
+        $result['additional_skills_count'] = count($result['additional_skills']);
+        
+        if($result['additional_skills_count'] === 0){
             $result['additional_skills'][] = ['name' => 'Вы знаете все необходимое'];
         }
 

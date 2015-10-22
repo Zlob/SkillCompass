@@ -9,9 +9,17 @@ define([
         template : _.template( tpl ),     
         tagName: 'div',
         className: 'detalization-item row',
+        itemView : Backbone.View.extend({
+            tagName: "span",
+            className: "label label-success json-table-item-label",
+            initialize: function() {
+                this.$el.text( this.model.get("name") );
+            }
+        }),
 
 
         initialize : function( options ) {
+            this.collection = new Backbone.Collection(this.model.get('have_skills'));
             this.$el.append( this.template() ); 
             this.applyBindings();
         },
