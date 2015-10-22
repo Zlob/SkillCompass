@@ -40,7 +40,7 @@ define([
         
         show : function() {
             $.when(this.loaded).then( function(){
-                $('#step-content').fadeIn(); 
+                $('#step-content').animate({opacity : 100}); 
             });            
         },
         

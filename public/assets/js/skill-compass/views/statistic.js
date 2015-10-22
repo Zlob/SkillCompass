@@ -38,7 +38,7 @@ define([
         show : function () {
             var self = this;
             $.when(this.promise).then(function(rawData) {
-                $('#step-content').fadeIn();
+                $('#step-content').animate({ opacity : 100 });
                 _.each(rawData, function(statisticData, id){
                     var statisticItem = new StatisticItem({model: self.skills.get(id), popular_chart_info: statisticData.popular_chart_info, related_chart_info: statisticData.related_chart_info});
                     self.items.push(statisticItem);

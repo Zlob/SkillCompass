@@ -16,7 +16,7 @@ define([
         },
         
         show : function() {
-            $('#step-content').fadeIn();
+            $('#step-content').animate({opacity : 100}); 
         }
         
     });

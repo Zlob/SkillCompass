@@ -67,7 +67,7 @@ require( [
             
             var stepView = this[routFunction]().render();          
             
-            $('#step-content').fadeOut( 'fast', function() {
+            $('#step-content').animate({ opacity: 0 }, function() {
                 $('#step-content').empty().append( stepView.$el );  
                 stepView.show();           
             })
@@ -100,8 +100,6 @@ require( [
         
         error  : function(){
             return new ErrorView();
-//             $('#step-content').empty().append( error.render().$el );  
-//             callback();
         },
         
         _checkSkillsSelected : function(){
