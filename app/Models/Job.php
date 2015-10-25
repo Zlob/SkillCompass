@@ -131,6 +131,9 @@ class Job extends Model {
     public function getGroupName($excludeSkillIds)
     {
         $groupName = $this->verifiedSkills
+            ->filter(function($verifiedSkill) use ($excludeSkillIds) {
+                return !in_array($verifiedSkill->id, $excludeSkillIds);
+            })
             ->sort(function($a, $b)
                    {
                        if ($a->id === $b->id) {
@@ -183,7 +186,7 @@ class Job extends Model {
     private function checkActual()
     {
         $currentDate = new \DateTime();
-        $threeDays = new \DateInterval('P1D');
+        $threeDays = new \DateInterval('P10D');
         $date = $currentDate->sub($threeDays)->format('Y-m-d');
         if($this->endda >= $date){
             return true;
