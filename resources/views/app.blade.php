@@ -20,7 +20,7 @@
                 <div class="jumbotron">
                     <div class="logo container">
                         <h1 class="main-header">Skill</h1>
-                        <img class="header-compass-img" src="http://www.snapagency.com/wp-content/uploads/2014/10/compass-icon.png">
+                        <img class="header-compass-img animated" src="/assets/img/logo.svg">
                         <h1 class="main-header">Compass</h1>
                     </div>
                     <div class="message container">
@@ -36,10 +36,11 @@
                         </div>
                     </div>
                 </div>
-                @yield('app-navigation')
+                @yield('app-navigation-top')
                 <div class="container">
                     @yield('content')
                 </div>
+                @yield('app-navigation-bottom')
             </div>
         </div>        
         <footer id="footer">

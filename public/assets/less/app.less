@@ -4,6 +4,7 @@
 @border-color : #dadada;
 @accent-color : #fff;
 @button-text-size: 20px;
+@base-logo-angle : 35deg;
 
 .dark-theme {
     background-color: @dark-color;
@@ -80,7 +81,29 @@ footer {
     width: 64px;
     height: 64px;
     vertical-align: middle;
+    transform: rotate(@base-logo-angle);
 }
+
+.animated {
+    animation: compass-move 3s;
+}
+
+
+@keyframes compass-move {
+    25% {
+        transform:rotate(@base-logo-angle + 15deg);
+        animation-timing-function : ease-in-out;
+    }
+    66% {
+        transform:rotate(@base-logo-angle - 10deg);
+        animation-timing-function : ease-in-out;
+    }
+    87% {
+        transform:rotate(@base-logo-angle + 5deg);
+        animation-timing-function : ease-in-out;
+    }
+}
+
 
 .jumbotron-sub {
     text-align: center;
@@ -282,5 +305,6 @@ footer {
     margin-top: 10px;
     font-size: 16px;
 }
+
 
 

@@ -18,8 +18,9 @@ require( [
         initialize: function(options) {
             this.navigation = new NavigationView();
             this.groups = new Groups();
-
+            
             this.skills = new Skills();
+            this.bindAnimation();
 
             this.promisArr = [
                 this.groups.fetch(),
@@ -105,6 +106,16 @@ require( [
         _checkSkillsSelected : function(){
             return this.skills.some(function(model){
                 return model.get('checked') === true;
+            });
+        },
+        
+        bindAnimation : function() {
+            $(".header-compass-img").bind("webkitAnimationEnd mozAnimationEnd animationEnd", function(){
+                $(this).removeClass("animated")  
+            });
+
+            $(".header-compass-img").hover(function(){
+                $(this).addClass("animated");        
             });
         }
         
