@@ -16,11 +16,12 @@ require( [
     var Router = Backbone.Router.extend({
         
         initialize: function(options) {
-            this.navigation = new NavigationView();
+            this.bindAnimation();
+
             this.groups = new Groups();
             
             this.skills = new Skills();
-            this.bindAnimation();
+           
 
             this.promisArr = [
                 this.groups.fetch(),
@@ -28,7 +29,8 @@ require( [
             ];   
             
             var self = this;
-            $.when.apply($, this.promisArr).then( function() {                
+            $.when.apply($, this.promisArr).then( function() { 
+                self.navigation = new NavigationView();
                 var storedSelection = new Backbone.Collection(JSON.parse(localStorage.getItem('selection'))); 
                 self.skills.each(function(skill) {
                     var storedSkill = storedSelection.get(skill.get('id'));
@@ -115,11 +117,13 @@ require( [
             });
 
             $(".header-compass-img").hover(function(){
-                $(this).addClass("animated");        
+                if(!$(this).hasClass("animated")){
+                    $(this).addClass("animated");
+                }                
             });
-        }
+        },
         
-        
+
          
     });
     

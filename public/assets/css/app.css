@@ -211,9 +211,18 @@ footer {
   text-align: center;
 }
 .app-navigation > li {
+  margin-left: 15px;
+  margin-right: 15px;
   float: none;
   display: inline-block;
   vertical-align: top;
+}
+.next-pointer {
+  font-size: 28px;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 35px;
+  color: #d25a27;
 }
 .app-navigation > li > a {
   border-radius: 50px;
@@ -234,9 +243,7 @@ footer {
 .app-navigation > li.active > a,
 .app-navigation > li.active > a:hover,
 .app-navigation > li.active > a:focus {
-  background-color: #314657;
-  color: #f2f2f2;
-  background-image: url(/assets/img/black-lozenge.png);
+  background-color: #d25a27;
 }
 #step-content {
   margin-bottom: 20px;

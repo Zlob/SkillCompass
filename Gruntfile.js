@@ -45,7 +45,16 @@ module.exports = function(grunt) {
         },
         
         requirejs: {
-            compile: {
+            compile_app: {                
+                    options: {
+                        baseUrl: "public/assets/js",
+                        mainConfigFile: "public/assets/js/requirejs-config.js",
+                        name: "app",
+                        out: "public/assets/js/dist.js"
+                    }
+               
+            },
+            compile_about: {
                 options: {
                     baseUrl: "public/assets/js",
                     mainConfigFile: "public/assets/js/requirejs-config.js",

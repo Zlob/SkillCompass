@@ -14,6 +14,7 @@ define([
 
         render : function() {      
             this.$el.empty().append( this.template() ); 
+            this.enableTooltip();
             return this;
         },
         
@@ -26,7 +27,20 @@ define([
                 
         clearActive : function() {
             this.$('.active').removeClass('active');
-        }
+        },
+        
+        enableTooltip : function () {
+            var tooltipedEls = this.$('[data-toggle="tooltip"]');
+            tooltipedEls.mouseenter(function(){
+                $(this).tooltip('show');
+            });
+            tooltipedEls.mouseleave(function(){
+                $(this).tooltip('hide');
+            });
+                                                        
+//             tooltip()
+        }        
+        
         
         
         

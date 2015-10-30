@@ -27,5 +27,6 @@
         <p>P.S. Код проекта расположен на <a href="https://github.com/Zlob/SkillCompass">GitHub</a>. Обо всех перебоях в работе сайта, а так же с вопросами и пожеланиями просьба писать в раздел <a href="https://github.com/Zlob/SkillCompass/issues">issues</a>.</p>
     </div>
 
+    <script data-main="assets/js/requirejs-config-about" src="/assets/bower_components/requirejs/require.js"></script>
 </div>
 @stop

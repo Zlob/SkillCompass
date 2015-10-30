@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="description" content="Statistic about programming languages and technologies">
         <meta name="viewport" content="width=1024">
-        <link rel="icon" type="image/png" href="assets/img/favicon-32x32.png">
+        <link rel="shortcut icon" type="image/png" href="assets/img/logo_favicon.png" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,300,700">
         <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -36,11 +36,10 @@
                         </div>
                     </div>
                 </div>
-                @yield('app-navigation-top')
+                @yield('app-navigation')
                 <div class="container">
                     @yield('content')
                 </div>
-                @yield('app-navigation-bottom')
             </div>
         </div>        
         <footer id="footer">

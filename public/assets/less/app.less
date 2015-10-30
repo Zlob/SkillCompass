@@ -3,6 +3,7 @@
 @light-color : #f2f2f2;
 @border-color : #dadada;
 @accent-color : #fff;
+@brand-color : #D25A27;
 @button-text-size: 20px;
 @base-logo-angle : 35deg;
 
@@ -259,9 +260,19 @@ footer {
 }
 
 .app-navigation > li {
-  float:none;
-  display:inline-block;
-  vertical-align: top;
+    margin-left: 15px;
+    margin-right: 15px;
+    float:none;
+    display:inline-block;
+    vertical-align: top;
+}
+
+.next-pointer {
+    font-size: 28px;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 35px;
+    color: @brand-color;
 }
 
 .app-navigation > li > a {
@@ -280,7 +291,7 @@ footer {
 }
 
 .app-navigation > li > a:hover, .app-navigation>li.active>a, .app-navigation>li.active>a:hover, .app-navigation>li.active>a:focus {
-    .dark-theme;
+    background-color : @brand-color;
 }
 
 #step-content {
@@ -305,6 +316,4 @@ footer {
     margin-top: 10px;
     font-size: 16px;
 }
-
-
 
