@@ -1,1 +1,1 @@
-# SkillPricer
+http://skillcompass.ru
